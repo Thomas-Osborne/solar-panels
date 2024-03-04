@@ -1,9 +1,13 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+
 export default function Header(props) {
 
-    const Icons = [
-        {name: 'GitHub', link: 'https://github.com/Thomas-Osborne'},
-        {name: 'LinkedIn', link: 'https://www.linkedin.com/in/tom-osborne-716619288/'},
-        {name: 'Email', link: 'mailto: thomas.m.osborne.2@gmail.com'}
+    const Links = [
+        {name: 'GitHub', link: 'https://github.com/Thomas-Osborne', icon: faGithub},
+        {name: 'LinkedIn', link: 'https://www.linkedin.com/in/tom-osborne-716619288/', icon: faLinkedin},
+        {name: 'Email', link: 'mailto: thomas.m.osborne.2@gmail.com', icon:faEnvelope}
     ];
 
     return (
@@ -14,8 +18,10 @@ export default function Header(props) {
                 </div>
 
                 <ul className="flex px-2">
-                    {Icons.map(icon => 
-                        <li className="mx-2 hover:text-blue-300"><a href={icon.link} target="_blank">{icon.name}</a></li>
+                    {Links.map(link => 
+                        <li className="mx-2 hover:text-blue-300"><a href={link.link} target="_blank">
+                            <button><FontAwesomeIcon icon={link.icon} size="2x" /></button>
+                        </a></li>
                     )}
                 </ul>
             </nav>
