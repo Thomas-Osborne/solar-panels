@@ -15,8 +15,13 @@ export default function Graph() {
         const formattedHours = hours < 10 ? `0${hours}` : hours;
         const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
+        console.log(hours)
+        if (hours % 12 !== 0 || minutes !== 0) {
+            return "";
+        }
+
         if (hours == 0 && minutes == 0) {
-            return(date.toUTCString());
+            return(`${date.toLocaleDateString()} ${formattedHours}:${formattedMinutes}`);
         }
     
         return `${formattedHours}:${formattedMinutes}`;
@@ -39,14 +44,18 @@ export default function Graph() {
     }
     
     return (
-        <AreaChart width={400} height={300} data={forecasts}>
-            <XAxis dataKey="period_end" tickLine={false} tickFormatter={str => formatTime(str)}/>
-            <YAxis />
-            <Area type="monotone" dataKey="pv_estimate90"></Area>
-            <Area type="monotone" dataKey="pv_estimate"></Area>
-            <Area type="monotone" dataKey="pv_estimate10"></Area>
-            <CartesianGrid />
-            <Tooltip content={<CustomTooltip />}/>
-        </AreaChart>
+
+        <div>
+            <button className="bg-blue-500 text-white font-medium px-5 py-2 rounded-lg hover:bg-blue-600">Test Button</button>
+            <AreaChart width={400} height={300} data={forecasts}>
+                <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}/>
+                <YAxis />
+                <Area type="monotone" dataKey="pv_estimate90"></Area>
+                <Area type="monotone" dataKey="pv_estimate"></Area>
+                <Area type="monotone" dataKey="pv_estimate10"></Area>
+                <CartesianGrid />
+                <Tooltip content={<CustomTooltip />}/>
+            </AreaChart>
+        </div>
     )
 }
