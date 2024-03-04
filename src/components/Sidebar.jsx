@@ -7,7 +7,7 @@ export default function Sidebar() {
     ];
 
     return (
-        <div className="bg-gradient-to-br from-orange-500 to-yellow-400 h-screen px-5 py-3 w-50">
+        <div className="h-screen px-5 py-3 w-50 border-r-2 border-gray-300">
             <h2 className="font-bold text-blue-900 text-2xl">Dashboard</h2>
             <ul className="pl-3">
                 {Links.map(link => 
