@@ -65,13 +65,6 @@ import forecastsData from '../../forecasts.json';
     let kwPerHoursRequired = (TOTAL_BATTERY_CAPACITY) * (desiredIncrease) / 100;
     let kwPerHourRate = (kwPerHoursRequired) / Math.min(chargingHours, MAX_CHARGING_HOURS);
     let current = Math.min(kwPerHourRate * 1000 / AV_BATTERY_VOLTAGE, MAX_CURRENT);
-
-console.log(
-    `expected yield: ${expectedYield}
-    charging hours: ${chargingHours}
-    desired increase: ${Math.round(desiredIncrease * 100) / 100}
-    required kwh: ${Math.round(kwPerHoursRequired * 100) / 100}
-    current: ${Math.round(current * 100) / 100}`); // round to 2dp
         
     function estimatePv(data) {
         // use trapezium rule
@@ -110,23 +103,23 @@ console.log(
             <div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Expected Daily Yield</span>
-                <span className="bg-blue-200">{expectedYield.toFixed(2)}</span>
+                <span className="bg-blue-200 text-xl">{expectedYield.toFixed(2)}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Charging Hours</span>
-                <span className="bg-blue-200">{chargingHours}</span>
+                <span className="bg-blue-200 text-xl">{chargingHours}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Desired Increase</span>
-                <span className="bg-blue-200">{desiredIncrease.toFixed(2)}%</span>
+                <span className="bg-blue-200 text-xl">{desiredIncrease.toFixed(2)}%</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Required kWh</span>
-                <span className="bg-blue-200">{kwPerHoursRequired.toFixed(2)} kWh</span>
+                <span className="bg-blue-200 text-xl">{kwPerHoursRequired.toFixed(2)} kWh</span>
             </div>
             <div className="flex flex-col py-1">
-                        <span className="font-semibold">Set Current Value</span>
-                        <span className="bg-blue-200">{current.toFixed(2)} A`</span>
+                <span className="font-semibold">Set Current Value</span>
+                <span className="bg-blue-200 text-xl">{current.toFixed(2)} A`</span>
             </div>
             </div>
         )
