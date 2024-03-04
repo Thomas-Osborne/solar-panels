@@ -1,5 +1,5 @@
 import forecastsData from '../../forecasts.json';
-import { CartesianGrid, Area, AreaChart, XAxis, YAxis, Tooltip } from 'recharts';
+import { Area, AreaChart, XAxis, YAxis, Label, Tooltip } from 'recharts';
 
 export default function Graph() {
 
@@ -11,20 +11,15 @@ export default function Graph() {
         const hours = date.getHours();
         const minutes = date.getMinutes();
 
-        // Add leading zero if needed
-        const formattedHours = hours < 10 ? `0${hours}` : hours;
-        const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-        console.log(hours)
-        if (hours % 12 !== 0 || minutes !== 0) {
+        if (hours % 6 !== 0 || minutes !== 0) {
             return "";
         }
 
         if (hours == 0 && minutes == 0) {
-            return(`${date.toLocaleDateString()} ${formattedHours}:${formattedMinutes}`);
+            return(`${date.toLocaleDateString('en-GB', {year: '2-digit', month: '2-digit', day: '2-digit'})}`);
         }
     
-        return `${formattedHours}:${formattedMinutes}`;
+        return `${date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'})}`;
       };
 
     function CustomTooltip({ active, payload, label }) {
@@ -32,11 +27,11 @@ export default function Graph() {
             const date = new Date(label);
             return (
                 <div className="border-2 border-black rounded-md bg-blue-200 p-2">
-                    <h5 className="text-center font-semibold">{`${date.toDateString()} ${formatTime(label)}`}</h5>
+                    <h5 className="text-center font-semibold">{`${date.toLocaleString('en-GB', {weekday: "long", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit"})}`}</h5>
                     <div className="border border-black"></div>
-                    <p><span>Upper Estimate: </span><span>{payload[0].value}</span></p>
-                    <h6><span className="font-bold">Mean Estimate: </span><span className="font-bold">{payload[1].value}</span></h6>
-                    <p><span>Lower Estimate: </span><span>{payload[2].value}</span></p>
+                    <p><span>Upper Estimate: </span><span>{payload[0].value.toFixed(2)}kW</span></p>
+                    <h6><span className="font-bold">Mean Estimate: </span><span className="font-bold">{payload[1].value.toFixed(2)}kW</span></h6>
+                    <p><span>Lower Estimate: </span><span>{payload[2].value.toFixed(2)}kW</span></p>
                 </div>
             )
         }
@@ -44,18 +39,22 @@ export default function Graph() {
     }
     
     return (
-
         <div>
             <button className="bg-blue-500 text-white font-medium px-5 py-2 rounded-lg hover:bg-blue-600">Test Button</button>
-            <AreaChart width={400} height={300} data={forecasts}>
-                <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}/>
-                <YAxis />
-                <Area type="monotone" dataKey="pv_estimate90"></Area>
-                <Area type="monotone" dataKey="pv_estimate"></Area>
-                <Area type="monotone" dataKey="pv_estimate10"></Area>
-                <CartesianGrid />
-                <Tooltip content={<CustomTooltip />}/>
-            </AreaChart>
+            <div className="flex justify-center items-center">
+                <AreaChart width={900} height={300} data={forecasts}>
+                    <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}>
+                        <Label value="Time" position="insideBottom" offset={-5}/>
+                    </XAxis>
+                    <YAxis>
+                        <Label value="Power Output (kW)" angle={-90}/>
+                    </YAxis>
+                    <Area type="monotone" dataKey="pv_estimate90"></Area>
+                    <Area type="monotone" dataKey="pv_estimate"></Area>
+                    <Area type="monotone" dataKey="pv_estimate10"></Area>
+                    <Tooltip content={<CustomTooltip />}/>
+                </AreaChart>
+            </div>
         </div>
     )
 }
