@@ -13,8 +13,9 @@ export default function Header(props) {
     return (
         <header className="bg-gradient-to-br from-yellow-400 to-orange-500 py-2 border-b-2 border-gray-300">
             <nav className="flex items-center justify-between p-4">
-                <div className="flex px-2 font-semibold text-3xl">
-                    <h1 className="text-white"><a href="/">Solar Panels</a></h1>
+                <div className="flex px-2 font-semibold text-3xl items-center">
+                    <img src="../src/assets/sun.png" alt="Sun Logo" width="50"/>
+                    <h1 className="text-white pl-2"><a href="/">Solar Panels</a></h1>
                 </div>
 
                 <div className="relative flex items-right">
