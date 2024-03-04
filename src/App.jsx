@@ -7,10 +7,14 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      <Sidebar />
-      <Body />
-      <Footer />
+      <div>
+        <Header />
+        <div className="flex">
+          <Sidebar />
+          <Body />
+        </div>
+        <Footer />
+      </div>
     </>
   )
 }

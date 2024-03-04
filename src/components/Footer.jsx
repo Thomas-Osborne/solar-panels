@@ -1,5 +1,7 @@
 export default function Footer() {
     return (
-        <p>This is the footer.</p>
+        <div className="text-xs text-center py-5 text-gray-500">
+            <p>This is the footer.</p>
+        </div>
     )
 }
