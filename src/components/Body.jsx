@@ -7,7 +7,7 @@ import History from './History';
 export default function Body() {
     return (
         <main className="h-screen flex flex-col">
-            <div className="rounded-xl m-5 px-5 border-2 border-blue-500 h-3/5 flex">
+            <div className="rounded-xl mx-5 my-1 px-5 h-3/5 flex">
                 <div className="w-1/5 flex flex-col px-2">
                     <Box name="Previous Records" content={<History />} />
                 </div>
@@ -15,7 +15,7 @@ export default function Body() {
                     <Box name="Graph" content={<Graph />} />
                 </div>
             </div>
-            <div className="rounded-xl m-5 px-5 border-2 border-blue-500 h-2/5 flex">
+            <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
                 <div className="w-1/2 flex flex-col px-2">
                     <Box name="Calculator" content={<Calculator />} />  
                 </div>
