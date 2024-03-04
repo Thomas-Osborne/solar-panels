@@ -7,16 +7,17 @@ export default function Header(props) {
     ];
 
     return (
-        <header className="border-2 border-red-500">
-            <nav className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <ul className="flex px-10">
-                    {Icons.map(icon => 
-                        <li className="mx-2"><a href={icon.link} target="_blank">{icon.name}</a></li>
-                    )}
-                </ul>
-                <div className="px-10 py-5">
+        <header className="border-2 bg-gradient-to-br from-yellow-400 to-orange-500 text-white">
+            <nav className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
+                <div className="px-2 py-5 font-semibold text-3xl">
                     <span>Solar Panels</span>
                 </div>
+
+                <ul className="flex px-2">
+                    {Icons.map(icon => 
+                        <li className="mx-2 hover:text-blue-300"><a href={icon.link} target="_blank">{icon.name}</a></li>
+                    )}
+                </ul>
             </nav>
         </header>
     )
