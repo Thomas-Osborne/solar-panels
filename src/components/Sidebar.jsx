@@ -1,9 +1,12 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGear, faHouse, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
 export default function Sidebar() {
     
     const Links = [
-        {name: 'Home', link: '/'},
-        {name: 'Settings', link: '/'},
-        {name: 'Logout', link: '/'}
+        {name: 'Home', link: '/', icon: faHouse},
+        {name: 'Settings', link: '/', icon: faGear},
+        {name: 'Logout', link: '/', icon: faRightFromBracket}
     ];
 
     return (
@@ -11,7 +14,11 @@ export default function Sidebar() {
             <h2 className="font-bold text-blue-900 text-2xl px-10">Dashboard</h2>
             <ul>
                 {Links.map(link => 
-                    <li className="my-2 hover:text-blue-300 hover:bg-gray-200 px-10"><a href={link.link}>{link.name}</a></li>
+                    <li className="my-2 hover:bg-gray-200 px-10"><a href={link.link} target="_blank">
+                        <button>
+                            <i className="pr-1 w-6"><FontAwesomeIcon icon={link.icon} fixedWidth /></i><span className="pl-1">{link.name}</span>
+                        </button>
+                    </a></li>
             )}
             </ul>
         </div>
