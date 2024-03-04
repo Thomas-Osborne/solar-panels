@@ -4,11 +4,11 @@ export default function Calculator()  {
             <form>
                 <div className="flex flex-col py-1">
                     <label className="font-semibold">Hours Charging</label>
-                    <input className="bg-red-100" type="number" />
+                    <input className="bg-blue-200" type="number" />
                 </div>
                 <div className="flex flex-col py-1">
                     <label className="font-semibold">SoC Increase</label>
-                    <input className="bg-red-100" type="number" />
+                    <input className="bg-blue-200" type="number" />
                 </div>
                 <br />
                 <div className="flex justify-center">
@@ -19,11 +19,11 @@ export default function Calculator()  {
             <div>
                 <div className="flex flex-col py-1">
                     <span className="font-semibold">Wattage Required</span>
-                    <span className="bg-red-100">Answer</span>
+                    <span className="bg-blue-200">Answer</span>
                 </div>
                 <div className="flex flex-col py-1">
                     <span className="font-semibold">Set Current Value</span>
-                    <span className="bg-red-100">Answer</span>
+                    <span className="bg-blue-200">Answer</span>
                 </div>
             </div>
         </div>

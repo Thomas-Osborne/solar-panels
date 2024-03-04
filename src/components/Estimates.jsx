@@ -110,23 +110,23 @@ console.log(
             <div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Expected Daily Yield</span>
-                <span className="bg-red-100">{expectedYield}</span>
+                <span className="bg-blue-200">{expectedYield}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Charging Hours</span>
-                <span className="bg-red-100">{chargingHours}</span>
+                <span className="bg-blue-200">{chargingHours}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Desired Increase</span>
-                <span className="bg-red-100">{Math.round(desiredIncrease * 100) / 100}%</span>
+                <span className="bg-blue-200">{Math.round(desiredIncrease * 100) / 100}%</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Required kWh</span>
-                <span className="bg-red-100">{Math.round(kwPerHoursRequired * 100) / 100} kWh</span>
+                <span className="bg-blue-200">{Math.round(kwPerHoursRequired * 100) / 100} kWh</span>
             </div>
             <div className="flex flex-col py-1">
                         <span className="font-semibold">Set Current Value</span>
-                        <span className="bg-red-100">{Math.round(current * 100) / 100} A`</span>
+                        <span className="bg-blue-200">{Math.round(current * 100) / 100} A`</span>
             </div>
             </div>
         )
