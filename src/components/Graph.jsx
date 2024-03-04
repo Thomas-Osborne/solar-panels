@@ -4,7 +4,6 @@ import { Area, AreaChart, XAxis, YAxis, Label, Tooltip } from 'recharts';
 export default function Graph() {
 
     const forecasts = forecastsData.forecasts;
-    console.log(forecasts)
 
     const formatTime = (dateTimeString) => {
         const date = new Date(dateTimeString);
