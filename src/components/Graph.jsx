@@ -1,5 +1,5 @@
 import forecastsData from '../../forecasts.json';
-import { Area, AreaChart, XAxis, YAxis, Label, Tooltip } from 'recharts';
+import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 'recharts';
 
 export default function Graph() {
 
@@ -52,6 +52,7 @@ export default function Graph() {
                     <Area type="monotone" dataKey="pv_estimate"></Area>
                     <Area type="monotone" dataKey="pv_estimate10"></Area>
                     <Tooltip content={<CustomTooltip />}/>
+                    <CartesianGrid vertical={false}/>
                 </AreaChart>
             </div>
         </div>
