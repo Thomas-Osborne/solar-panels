@@ -11,19 +11,21 @@ export default function Header(props) {
     ];
 
     return (
-        <header className="bg-gradient-to-br from-yellow-400 to-orange-500 text-white py-2 border-b-2 border-gray-300">
-            <nav className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
-                <div className="px-2 font-semibold text-3xl">
-                    <h1><a href="/">Solar Panels</a></h1>
+        <header className="bg-gradient-to-br from-yellow-400 to-orange-500 py-2 border-b-2 border-gray-300">
+            <nav className="flex items-center justify-between p-4">
+                <div className="flex px-2 font-semibold text-3xl">
+                    <h1 className="text-white"><a href="/">Solar Panels</a></h1>
                 </div>
 
-                <ul className="flex px-2">
-                    {Links.map(link =>
-                        <li className="mx-2 hover:text-blue-300"><a href={link.link} target="_blank">
-                            <button className="text-black hover:transform hover:rotate-12 transition-transform duration-200"><FontAwesomeIcon icon={link.icon} size="2x" /></button>
-                        </a></li>
-                    )}
-                </ul>
+                <div className="relative flex items-right">
+                    <ul className="flex px-2">
+                        {Links.map(link =>
+                            <li className="mx-2 hover:text-blue-300"><a href={link.link} target="_blank">
+                                <button className="text-black hover:transform hover:rotate-12 transition-transform duration-200"><FontAwesomeIcon icon={link.icon} size="2x" /></button>
+                            </a></li>
+                        )}
+                    </ul>
+                </div>
             </nav>
         </header>
     )
