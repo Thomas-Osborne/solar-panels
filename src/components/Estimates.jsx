@@ -110,7 +110,7 @@ import forecastsData from '../../forecasts.json';
                 <span className="bg-blue-200 text-xl">{chargingHours}</span>
             </div>
             <div className="flex flex-col py-1">
-                <span className="font-semibold">Desired Increase</span>
+                <span className="font-semibold">Desired SoC Increase</span>
                 <span className="bg-blue-200 text-xl">{desiredIncrease.toFixed(2)}%</span>
             </div>
             <div className="flex flex-col py-1">

@@ -3,11 +3,11 @@ export default function Calculator()  {
         <div>
             <form>
                 <div className="flex flex-col py-1">
-                    <label className="font-semibold">Hours Charging</label>
+                    <label className="font-semibold">Charging Hours</label>
                     <input className="bg-blue-200 text-xl" type="number" />
                 </div>
                 <div className="flex flex-col py-1">
-                    <label className="font-semibold">SoC Increase</label>
+                    <label className="font-semibold">Desired SoC Increase</label>
                     <input className="bg-blue-200 text-xl" type="number" />
                 </div>
                 <br />
@@ -18,7 +18,7 @@ export default function Calculator()  {
 
             <div>
                 <div className="flex flex-col py-1">
-                    <span className="font-semibold">Wattage Required</span>
+                    <span className="font-semibold">Required kWh</span>
                     <span className="bg-blue-200">Answer</span>
                 </div>
                 <div className="flex flex-col py-1">
