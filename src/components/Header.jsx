@@ -7,9 +7,9 @@ export default function Header(props) {
     ];
 
     return (
-        <header className="border-2 bg-gradient-to-br from-yellow-400 to-orange-500 text-white">
+        <header className="border-2 bg-gradient-to-br from-yellow-400 to-orange-500 text-white py-2">
             <nav className="max-w-screen-xl flex flex-wrap items-center justify-between p-4">
-                <div className="px-2 py-5 font-semibold text-3xl">
+                <div className="px-2 font-semibold text-3xl">
                     <span>Solar Panels</span>
                 </div>
 
