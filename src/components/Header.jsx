@@ -18,9 +18,9 @@ export default function Header(props) {
                 </div>
 
                 <ul className="flex px-2">
-                    {Links.map(link => 
+                    {Links.map(link =>
                         <li className="mx-2 hover:text-blue-300"><a href={link.link} target="_blank">
-                            <button><FontAwesomeIcon icon={link.icon} size="2x" /></button>
+                            <button className="text-black hover:transform hover:rotate-12 transition-transform duration-200"><FontAwesomeIcon icon={link.icon} size="2x" /></button>
                         </a></li>
                     )}
                 </ul>
