@@ -38,9 +38,9 @@ export default function Graph() {
     }
     
     return (
-        <div>
-            <button className="bg-blue-500 text-white font-medium px-5 py-2 rounded-lg hover:bg-blue-600">Test Button</button>
-            <div className="flex justify-center items-center">
+        <div className="flex flex-col items-center">
+            <button className="bg-blue-500 text-white font-medium px-5 py-2 rounded-lg hover:bg-blue-600">Click here</button>
+            <div>
                 <AreaChart width={900} height={300} data={forecasts}>
                     <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}>
                         <Label value="Time" position="insideBottom" offset={-5}/>
