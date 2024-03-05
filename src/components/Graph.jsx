@@ -39,6 +39,7 @@ export default function Graph(props) {
     
     return (
         <div className="flex flex-col items-center">
+            
             <button className="bg-blue-500 text-white text-xl font-medium px-40 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600">Fetch Data</button>
             <p className="text-gray-700 font-light text-xs px-40 pb-3">Last Updated: Time</p>
             <div>
