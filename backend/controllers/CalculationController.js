@@ -15,4 +15,4 @@ function calculateValues(chargingHours, desiredIncrease) {
     };
 }
 
-export { calculateValues, helloWorld };
+export { calculateValues };

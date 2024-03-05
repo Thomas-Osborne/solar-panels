@@ -1,12 +1,11 @@
 import forecastsData from '../../forecasts.json';
+import { calculateValues } from '../../backend/controllers/CalculationController';
 
 export default function Estimates() {
 
     const NUMBER_OF_FORECASTS = 48;
     const TOTAL_BATTERY_CAPACITY = 24.3;
     const MAX_CHARGING_HOURS = 6;
-    const AV_BATTERY_VOLTAGE = 52;
-    const MAX_CURRENT = 70;
     const DAILY_USAGE = 18;
 
     let desiredIncrease;
@@ -59,9 +58,7 @@ export default function Estimates() {
 
     desiredIncrease = estimateDesiredIncrease(analysedData, 6, 10);
 
-    let kwPerHoursRequired = (TOTAL_BATTERY_CAPACITY) * (desiredIncrease) / 100;
-    let kwPerHourRate = (kwPerHoursRequired) / Math.min(chargingHours, MAX_CHARGING_HOURS);
-    let current = Math.min(kwPerHourRate * 1000 / AV_BATTERY_VOLTAGE, MAX_CURRENT);
+    const calculatedValues = calculateValues(chargingHours, desiredIncrease);
         
     function estimatePv(data) {
         // use trapezium rule
@@ -111,11 +108,11 @@ export default function Estimates() {
         </div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Required kWh</span>
-            <span className="bg-blue-200 text-xl">{kwPerHoursRequired.toFixed(2)} kWh</span>
+            <span className="bg-blue-200 text-xl">{calculatedValues.requiredKwh.toFixed(2)} kWh</span>
         </div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Set Current Value</span>
-            <span className="bg-blue-200 text-xl">{current.toFixed(2)} A`</span>
+            <span className="bg-blue-200 text-xl">{calculatedValues.currentValue.toFixed(2)} A`</span>
         </div>
         </div>
     )
