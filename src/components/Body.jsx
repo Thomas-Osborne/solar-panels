@@ -32,7 +32,7 @@ export default function Body() {
     const [dates, setDates] = React.useState(initialKeys);
     const [chosenDate, setChosenDate] = React.useState(initialDate);
 
-    const [forecasts, setForecasts] = React.useState(splitData(initialData)[initialDate]);
+    const [forecasts, setForecasts] = React.useState(splitData(initialData));
 
     function updateDate(date) {
         setChosenDate(date);
@@ -63,7 +63,7 @@ export default function Body() {
                     <Box name="Calculator" content={<Calculator />} />  
                 </div>
                 <div className="w-1/2 flex flex-col px-2">
-                    <Box name="Estimates" content={<Estimates data={forecasts}/>} />
+                    <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate}/>} />
                 </div>
             </div>
       </main>

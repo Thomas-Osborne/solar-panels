@@ -11,7 +11,7 @@ export default function Estimates(props) {
     let desiredIncrease;
     let chargingHours;
 
-    const forecasts = props.data;
+    const forecasts = props.data[props.chosenDate];
     let times = []
     let index;
 
