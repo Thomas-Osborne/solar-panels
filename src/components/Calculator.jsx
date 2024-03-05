@@ -19,11 +19,11 @@ export default function Calculator()  {
             <div>
                 <div className="flex flex-col py-1">
                     <span className="font-semibold">Required kWh</span>
-                    <span className="bg-blue-200">Answer</span>
+                    <span className="bg-blue-200 text-xl">Answer</span>
                 </div>
                 <div className="flex flex-col py-1">
                     <span className="font-semibold">Set Current Value</span>
-                    <span className="bg-blue-200">Answer</span>
+                    <span className="bg-blue-200 text-xl">Answer</span>
                 </div>
             </div>
         </div>
