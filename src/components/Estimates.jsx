@@ -20,7 +20,6 @@ import forecastsData from '../../forecasts.json';
     
     for (let i = 0; i < forecasts.length; i++) {
         forecasts[i].period_end = new Date(forecasts[i].period_end); // make it a date object for ease
-        console.log(forecasts[i].period_end);
         times.push(forecasts[i].period_end.getTime());
     }
 
@@ -31,27 +30,23 @@ import forecastsData from '../../forecasts.json';
 
 
     if (currentTime.getHours() <= 5) {
-        console.log("Time between 00:00 and 05:00: show today's data.");
         chargingHours = MAX_CHARGING_HOURS - currentTime.getHours() - 1;
 
         for (let i = 0; i < forecasts.length; i++) {
             if (forecasts[i].period_end.getUTCDate() === todaysDate) {
                 analysedData.push(forecasts[i]);
-                console.log(analysedData[i].pv_estimate);
             } else {
             break;
             }
         }
         index = 0;
     } else {
-        console.log("Time after 05:00: show tomorrow's data.");
         chargingHours = MAX_CHARGING_HOURS;
         for (let i = 0; i < forecasts.length; i++) {
             if (forecasts[i].period_end.getUTCDate() === todaysDate) {
                 continue;
             } else if (forecasts[i].period_end.getUTCDate() === tomorrowsDate) {
                 analysedData.push(forecasts[i]);
-                console.log(forecasts[i].pv_estimate);
             } else {
                 break;
             }
