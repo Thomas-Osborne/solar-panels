@@ -1,5 +1,3 @@
-import { determineFixedDate } from '../../backend/controllers/SplitDataController';
-
 import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 'recharts';
 
 export default function Graph(props) {
