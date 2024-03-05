@@ -2,6 +2,7 @@ import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 're
 
 export default function Graph(props) {
 
+    
     const forecasts = props.data;
 
     const formatTime = (dateTimeString) => {
