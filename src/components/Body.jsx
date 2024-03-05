@@ -13,22 +13,29 @@ import React from "react";
 
 export default function Body() {
 
+    function formatDatetime(date) {
+        const d = new Date(date);
+        console.log(d);
+        console.log(typeof(d))
+        return d.toLocaleString('en-GB', {day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit"})
+    }
+
     const testingData = [
-        {id: 1, data: forecastsData.forecasts, date: "11/02/2024"},
-        {id: 2, data: forecastsData2.forecasts, date: "05/03/2024"}
+        {id: 1, data: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)},
+        {id: 2, data: forecastsData2.forecasts, date: formatDatetime(forecastsData2.forecasts[0].period_end)}
     ];
       
     const initialData = testingData.find(x => x.id === 1).data;
     const initialKeys = Object.keys(splitData(initialData));
-    const initialKey = determineFixedDate(initialData);
+    const initialDate = determineFixedDate(initialData);
 
-    const [dates, setDate] = React.useState(initialKeys);
-    const [chosenDate, setChosenDate] = React.useState(initialKey);
+    const [dates, setDates] = React.useState(initialKeys);
+    const [chosenDate, setChosenDate] = React.useState(initialDate);
 
-    const [forecasts, setForecasts] = React.useState(splitData(initialData)[initialKey]);
+    const [forecasts, setForecasts] = React.useState(splitData(initialData)[initialDate]);
 
     function updateDate(date) {
-        console.log(date);
+        setChosenDate(date);
     }
 
     function updateForecasts(id) {
@@ -36,8 +43,8 @@ export default function Body() {
         const newDates = Object.keys(splitData(newData))
         const newDate = determineFixedDate(newData);
 
-        setKeys(newDates);
-        setChosenKey(newDate);
+        setDates(newDates);
+        setChosenDate(newDate);
         setForecasts(splitData(newData)[newDate]);
     }
 
