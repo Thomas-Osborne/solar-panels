@@ -20,13 +20,13 @@ export default function App() {
   const initialData = testingData.find(x => x.id === 1).data;
   const initialKey = determineFixedDate(initialData);
 
-  console.log(initialKey);
-
   const [forecasts, setForecasts] = React.useState(splitData(initialData)[initialKey]);
 
   function updateForecasts(id) {
-    const newForecast = testingData.find(x => x.id === id).data;
-    setForecasts(newForecast)
+    const newData = testingData.find(x => x.id === id).data;
+    const newKey = determineFixedDate(newData);
+
+    setForecasts(splitData(newData)[newKey]);
   }
 
   return (
