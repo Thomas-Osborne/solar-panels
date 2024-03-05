@@ -40,7 +40,7 @@ export default function Graph(props) {
             <div>
                 {props.dates.map(date => 
                     <button 
-                        className="bg-blue-400 text-white text-md font-medium px-3 mx-1 rounded-lg"
+                        className="bg-blue-300 text-white text-md font-medium px-3 mx-1 rounded-lg hover:bg-blue-400"
                         onClick={() => props.handleClick(date)}
                     >
                         {date}
