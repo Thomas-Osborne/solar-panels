@@ -12,6 +12,10 @@ export default function App() {
 
   const [forecasts, setForecasts] = React.useState(forecastsData.forecasts);
 
+  function updateForecasts(id) {
+    console.log(id);
+  }
+
   return (
     <>
       <div>
@@ -19,10 +23,15 @@ export default function App() {
         <div className="flex">
           <Sidebar />
           <div className="grow">
-            <Body testingData = {[
-              {id: 1, data: forecastsData.forecasts},
-              {id: 2, data: forecastsData2.forecasts}
-            ]} data={forecasts} />
+            <Body 
+              testingData = {[
+                {id: 1, data: forecastsData.forecasts},
+                {id: 2, data: forecastsData2.forecasts}
+              ]} 
+              data={forecasts}
+              handleClick={updateForecasts}  
+            />
+
             <Footer />
           </div>
         </div>

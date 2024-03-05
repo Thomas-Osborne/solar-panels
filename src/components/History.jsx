@@ -6,7 +6,7 @@ export default function History(props) {
 
     return (
         <div>
-            {Entries.map(entry => <Entry date={entry.date} id={entry.id}/>)}
+            {Entries.map(entry => <Entry date={entry.date} handleClick={props.handleClick} id={entry.id}/>)}
         </div>
     )
 }
