@@ -1,18 +1,16 @@
 function splitData(data) {
-    data = data.map(value => value.period_end);
 
     const splitDates = {};
     
     data.forEach(item => {
-        const fullDate = new Date(item);
+        const fullDate = new Date(item.period_end);
         const shortDate = fullDate.toLocaleDateString();
         if (!splitDates[shortDate]) {
             splitDates[shortDate] = [];
         }
-        splitDates[shortDate].push(fullDate);
+        splitDates[shortDate].push(item);
     });
 
-    console.log(splitDates);
     return splitDates;
 }
 
