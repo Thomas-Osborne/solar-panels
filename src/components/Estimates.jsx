@@ -1,5 +1,7 @@
 import forecastsData from '../../forecasts.json';
 
+export default function Estimates() {
+
     const NUMBER_OF_FORECASTS = 48;
     const TOTAL_BATTERY_CAPACITY = 24.3;
     const MAX_CHARGING_HOURS = 6;
@@ -17,7 +19,7 @@ import forecastsData from '../../forecasts.json';
     const currentTime = new Date();
 
     let analysedData = [];
-    
+
     for (let i = 0; i < forecasts.length; i++) {
         forecasts[i].period_end = new Date(forecasts[i].period_end); // make it a date object for ease
         times.push(forecasts[i].period_end.getTime());
@@ -93,31 +95,30 @@ import forecastsData from '../../forecasts.json';
         // TODO
     }
 
-    export default function Estimates() {
-        return (
-            <div>
-            <div className="flex flex-col py-1">
-                <span className="font-semibold">Expected Daily Yield</span>
-                <span className="bg-blue-200 text-xl">{expectedYield.toFixed(2)}</span>
-            </div>
-            <div className="flex flex-col py-1">
-                <span className="font-semibold">Charging Hours</span>
-                <span className="bg-blue-200 text-xl">{chargingHours}</span>
-            </div>
-            <div className="flex flex-col py-1">
-                <span className="font-semibold">Desired SoC Increase</span>
-                <span className="bg-blue-200 text-xl">{desiredIncrease.toFixed(2)}%</span>
-            </div>
-            <div className="flex flex-col py-1">
-                <span className="font-semibold">Required kWh</span>
-                <span className="bg-blue-200 text-xl">{kwPerHoursRequired.toFixed(2)} kWh</span>
-            </div>
-            <div className="flex flex-col py-1">
-                <span className="font-semibold">Set Current Value</span>
-                <span className="bg-blue-200 text-xl">{current.toFixed(2)} A`</span>
-            </div>
-            </div>
-        )
-    }
+    return (
+        <div>
+        <div className="flex flex-col py-1">
+            <span className="font-semibold">Expected Daily Yield</span>
+            <span className="bg-blue-200 text-xl">{expectedYield.toFixed(2)}</span>
+        </div>
+        <div className="flex flex-col py-1">
+            <span className="font-semibold">Charging Hours</span>
+            <span className="bg-blue-200 text-xl">{chargingHours}</span>
+        </div>
+        <div className="flex flex-col py-1">
+            <span className="font-semibold">Desired SoC Increase</span>
+            <span className="bg-blue-200 text-xl">{desiredIncrease.toFixed(2)}%</span>
+        </div>
+        <div className="flex flex-col py-1">
+            <span className="font-semibold">Required kWh</span>
+            <span className="bg-blue-200 text-xl">{kwPerHoursRequired.toFixed(2)} kWh</span>
+        </div>
+        <div className="flex flex-col py-1">
+            <span className="font-semibold">Set Current Value</span>
+            <span className="bg-blue-200 text-xl">{current.toFixed(2)} A`</span>
+        </div>
+        </div>
+    )
+}
 
 
