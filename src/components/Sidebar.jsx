@@ -14,7 +14,7 @@ export default function Sidebar() {
             <h2 className="font-bold text-blue-900 text-2xl px-10">Dashboard</h2>
             <ul>
                 {Links.map(link => 
-                    <li className="px-10 py-1 hover:bg-gray-200"><a href={link.link} target="_blank">
+                    <li className="px-10 py-1 hover:bg-gray-200"><a href={link.link}>
                         <button>
                             <i className="pr-1 w-6"><FontAwesomeIcon icon={link.icon} fixedWidth /></i><span className="pl-1">{link.name}</span>
                         </button>
