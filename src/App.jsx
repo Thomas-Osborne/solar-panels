@@ -10,10 +10,16 @@ import React from "react";
 
 export default function App() {
 
-  const [forecasts, setForecasts] = React.useState(forecastsData.forecasts);
+  const testingData = [
+    {id: 1, data: forecastsData.forecasts},
+    {id: 2, data: forecastsData2.forecasts}
+  ];
+
+  const [forecasts, setForecasts] = React.useState(testingData.find(x => x.id === 1).data);
 
   function updateForecasts(id) {
-    console.log(id);
+    const newForecast = testingData.find(x => x.id === id).data;
+    setForecasts(newForecast)
   }
 
   return (
