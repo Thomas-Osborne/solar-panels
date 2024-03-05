@@ -14,10 +14,6 @@ export default function Graph(props) {
         if (hours % 6 !== 0 || minutes !== 0) {
             return "";
         }
-
-        if (hours == 0 && minutes == 0) {
-            return(`${date.toLocaleDateString('en-GB', {year: '2-digit', month: '2-digit', day: '2-digit'})}`);
-        }
     
         return `${date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'})}`;
       };
