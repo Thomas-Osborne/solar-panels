@@ -25,10 +25,8 @@ function determineFixedDate(data) {
     const secondDate = new Date(secondEntry.period_end);
 
     if (firstDate.getHours() <= 18) {
-        console.log("Want today's data");
         return secondDate.toLocaleDateString();
     } else {
-        console.log("Want tomorrow's data");
         return firstDate.toLocaleDateString();
     }
 
