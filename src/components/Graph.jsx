@@ -1,9 +1,8 @@
-import forecastsData from '../../forecasts.json';
 import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 'recharts';
 
-export default function Graph() {
+export default function Graph(props) {
 
-    const forecasts = forecastsData.forecasts;
+    const forecasts = props.data;
 
     const formatTime = (dateTimeString) => {
         const date = new Date(dateTimeString);

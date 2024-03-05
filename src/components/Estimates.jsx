@@ -1,17 +1,17 @@
-import forecastsData from '../../forecasts.json';
 import { calculateValues } from '../../backend/controllers/CalculationController';
 
-export default function Estimates() {
+export default function Estimates(props) {
 
     const NUMBER_OF_FORECASTS = 48;
     const TOTAL_BATTERY_CAPACITY = 24.3;
     const MAX_CHARGING_HOURS = 6;
+
     const DAILY_USAGE = 18;
 
     let desiredIncrease;
     let chargingHours;
 
-    const forecasts = forecastsData.forecasts;
+    const forecasts = props.data;
     let times = []
     let index;
 
