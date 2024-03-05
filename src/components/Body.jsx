@@ -15,8 +15,6 @@ export default function Body() {
 
     function formatDatetime(date) {
         const d = new Date(date);
-        console.log(d);
-        console.log(typeof(d))
         return d.toLocaleString('en-GB', {day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit"})
     }
 
@@ -45,7 +43,7 @@ export default function Body() {
 
         setDates(newDates);
         setChosenDate(newDate);
-        setForecasts(splitData(newData)[newDate]);
+        setForecasts(splitData(newData));
     }
 
     return (
@@ -63,7 +61,7 @@ export default function Body() {
                     <Box name="Calculator" content={<Calculator />} />  
                 </div>
                 <div className="w-1/2 flex flex-col px-2">
-                    <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate}/>} />
+                    <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate} handleClick={updateDate}/>} />
                 </div>
             </div>
       </main>
