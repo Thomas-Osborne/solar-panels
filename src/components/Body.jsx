@@ -5,7 +5,6 @@ import Graph from './Graph';
 import History from './History';
 
 export default function Body(props) {
-    console.log(props.testingData.find(x => x.id === 1))
     return (
         <main className="h-screen flex flex-col">
             <div className="rounded-xl mx-5 my-1 px-5 h-3/5 flex">

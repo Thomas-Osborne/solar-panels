@@ -9,9 +9,7 @@ export default function Calculator()  {
             desiredIncrease: 0
         }
     )
-
-    console.log(formData);
-
+    
     const [calculations, setCalculations] = React.useState(
         {
             requiredKwh: 0,

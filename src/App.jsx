@@ -3,6 +3,8 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
+import { splitData } from '../backend/controllers/SplitDataController';
+
 import forecastsData from '../forecasts.json';
 import forecastsData2 from '../forecasts2.json';
 
@@ -14,8 +16,11 @@ export default function App() {
     {id: 1, data: forecastsData.forecasts},
     {id: 2, data: forecastsData2.forecasts}
   ];
+  
 
   const [forecasts, setForecasts] = React.useState(testingData.find(x => x.id === 1).data);
+
+  splitData(forecasts);
 
   function updateForecasts(id) {
     const newForecast = testingData.find(x => x.id === id).data;
