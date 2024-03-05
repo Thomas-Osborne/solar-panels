@@ -1,8 +1,7 @@
 import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 'recharts';
 
 export default function Graph(props) {
-
-    
+   
     const forecasts = props.data;
 
     const formatTime = (dateTimeString) => {
@@ -42,6 +41,8 @@ export default function Graph(props) {
             
             <button className="bg-blue-500 text-white text-xl font-medium px-40 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600">Fetch Data</button>
             <p className="text-gray-700 font-light text-xs px-40 pb-3">Last Updated: Time</p>
+
+            <h3 className="font-bold text-xl py-2">Forecast Data for DATE</h3>
             <div>
                 <AreaChart width={800} height={300} data={forecasts}>
                     <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}>
