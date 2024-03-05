@@ -1,22 +1,45 @@
-import { useState } from "react";
+import React from "react";
 
 export default function Calculator()  {
 
-    const [chargingHours, setChargingHours] = useState("");
-    const [desiredIncrease, setDesiredIncrease] = useState("");
-    const [requiredKwh, setRequiredKwh] = useState("0");
-    const [currentValue, setCurrentValue] = useState("0");
+    const [formData, setFormData] = React.useState(
+        {chargingHours: "", desiredIncrease: ""}
+    )
+
+    const [requiredKwh, setRequiredKwh] = React.useState("0");
+    const [currentValue, setCurrentValue] = React.useState("0");
+
+    function handleChange(event) {
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
 
     return (
         <div>
             <form>
                 <div className="flex flex-col py-1">
                     <label className="font-semibold">Charging Hours</label>
-                    <input className="bg-blue-200 text-xl" type="number" />
+                    <input 
+                        className="bg-blue-200 text-xl" 
+                        type="number"
+                        placeholder="Hours for charging..."
+                        onChange={handleChange}    
+                        name="chargingHours"
+                    />
                 </div>
                 <div className="flex flex-col py-1">
                     <label className="font-semibold">Desired SoC Increase</label>
-                    <input className="bg-blue-200 text-xl" type="number" />
+                    <input 
+                        className="bg-blue-200 text-xl" 
+                        type="number"
+                        placeholder="Increase wanted..."
+                        onChange={handleChange}
+                        name="desiredIncrease"
+                    />
                 </div>
                 <br />
                 <div className="flex justify-center">
