@@ -22,7 +22,7 @@ export default function App() {
 
   console.log(initialKey);
 
-  const [forecasts, setForecasts] = React.useState(splitData(testingData.find(x => x.id === 1).data)[initialKey]);
+  const [forecasts, setForecasts] = React.useState(splitData(initialData)[initialKey]);
 
   function updateForecasts(id) {
     const newForecast = testingData.find(x => x.id === id).data;
