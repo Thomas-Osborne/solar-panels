@@ -19,15 +19,26 @@ export default function Body() {
     ];
       
     const initialData = testingData.find(x => x.id === 1).data;
+    const initialKeys = Object.keys(splitData(initialData));
     const initialKey = determineFixedDate(initialData);
+
+    const [dates, setDate] = React.useState(initialKeys);
+    const [chosenDate, setChosenDate] = React.useState(initialKey);
 
     const [forecasts, setForecasts] = React.useState(splitData(initialData)[initialKey]);
 
+    function updateDate(date) {
+        console.log(date);
+    }
+
     function updateForecasts(id) {
         const newData = testingData.find(x => x.id === id).data;
-        const newKey = determineFixedDate(newData);
+        const newDates = Object.keys(splitData(newData))
+        const newDate = determineFixedDate(newData);
 
-        setForecasts(splitData(newData)[newKey]);
+        setKeys(newDates);
+        setChosenKey(newDate);
+        setForecasts(splitData(newData)[newDate]);
     }
 
     return (
@@ -37,7 +48,7 @@ export default function Body() {
                     <Box name="Previous Records" content={<History oldData={testingData} handleClick={updateForecasts} />} />
                 </div>
                 <div className="w-4/5 flex flex-col px-2">
-                    <Box name="Graph" content={<Graph data={forecasts}/>} />
+                    <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} handleClick={updateDate}/>} />
                 </div>
             </div>
             <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
