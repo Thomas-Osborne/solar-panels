@@ -1,8 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const forecastRoutes = require('./routes/forecasts');
 require('dotenv').config();
 
 const app = express();
-const forecastRoutes = require('./routes/forecasts');
 
 // middleware
 
@@ -16,7 +17,15 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/forecasts', forecastRoutes);
 
-// listen
-app.listen(process.env.PORT, () => {
-    console.log(`Listening on port ${process.env.PORT}`);
-})
+// connect to mongodb
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+        console.log("Connected to DB")
+        // listen
+        app.listen(process.env.PORT, () => {
+            console.log(`Listening on port ${process.env.PORT}`);
+        })
+    })
+    .catch((error => {
+        console.log(error);
+    }))
