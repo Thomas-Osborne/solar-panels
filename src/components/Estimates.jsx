@@ -67,9 +67,9 @@ export default function Estimates(props) {
         }
     }
 
-    function estimateDesiredIncrease(data, expectedYield, currentSoc) {
+    function estimateDesiredIncrease(data, expectedYield, presentSoc) {
         const DAILY_USE = 18;
-        let battery = TOTAL_BATTERY_CAPACITY / 100 * currentSoc;
+        let battery = TOTAL_BATTERY_CAPACITY / 100 * presentSoc;
 
         const socIncrease = (battery + (DAILY_USE - expectedYield)) / TOTAL_BATTERY_CAPACITY * 100;
         return socIncrease;
