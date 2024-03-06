@@ -1,15 +1,11 @@
 const express = require('express');
 const Forecast = require('../models/Forecast');
-
 const router = express.Router();
+const { getForecasts, getForecast } = require('../controllers/forecastController');
 
-router.get('/', (req, res) => {
-    res.json({message: 'GET all Forecasts'});
-})
+router.get('/', getForecasts);
 
-router.get('/:id', (req, res) => {
-    res.json({message: 'GET a single Forecast'});
-})
+router.get('/:id', getForecast);
 
 router.post('/', async (req, res) => {
     const { forecasts } = req.body
