@@ -8,6 +8,7 @@ import { determineFixedDate, splitData } from '../../backend/controllers/SplitDa
 
 import forecastsData from '../../forecasts.json';
 import forecastsData2 from '../../forecasts2.json';
+import forecastsData3 from '../../forecasts3.json';
 
 import React from "react";
 
@@ -20,7 +21,8 @@ export default function Body() {
 
     const testingData = [
         {id: 1, data: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)},
-        {id: 2, data: forecastsData2.forecasts, date: formatDatetime(forecastsData2.forecasts[0].period_end)}
+        {id: 2, data: forecastsData2.forecasts, date: formatDatetime(forecastsData2.forecasts[0].period_end)},
+        {id: 3, data: forecastsData3.forecasts, date: formatDatetime(forecastsData3.forecasts[0].period_end)}
     ];
       
     const initialData = testingData.find(x => x.id === 1).data;
