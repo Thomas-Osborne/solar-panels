@@ -1,5 +1,5 @@
 import React from "react";
-import { calculateValues } from '../../backend/controllers/CalculationController';
+import { calculateValues } from '../../backend/controllers/calculationController';
 
 export default function Calculator()  {
 

@@ -1,4 +1,4 @@
-import { calculateValues } from '../../backend/controllers/CalculationController';
+import { calculateValues } from '../../backend/controllers/calculationController';
 
 import React from 'react';
 
