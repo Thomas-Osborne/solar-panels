@@ -1,5 +1,7 @@
 import { calculateValues } from '../../backend/controllers/CalculationController';
 
+import React from 'react';
+
 export default function Estimates(props) {
 
     const NUMBER_OF_FORECASTS = 48;
@@ -8,19 +10,40 @@ export default function Estimates(props) {
 
     const DAILY_USAGE = 18;
 
-    let desiredIncrease;
     let chargingHours = 6;
 
     const forecasts = props.data[props.chosenDate];
 
-    const expectedYield = estimatePv(forecasts);
+    const [properties, setProperties] = React.useState({
+        chargingHours: 6,
+        expectedYield: 0,
+        desiredIncrease: 0,
+        requiredKwh: 0,
+        currentValue: 0
+    })
+    
+    React.useEffect(() => {
+        const newChargingHours = 6;
+        const newExpectedYield = estimatePv(forecasts);
+        const newDesiredIncrease = estimateDesiredIncrease(forecasts, newChargingHours, 0);
 
-    desiredIncrease = estimateDesiredIncrease(forecasts, 6, 10);
+        const calculatedValues = calculateValues(chargingHours, newDesiredIncrease);
+        const newRequiredKwh = calculatedValues.requiredKwh;
+        const newCurrentValue = calculatedValues.currentValue;
 
-    const calculatedValues = calculateValues(chargingHours, desiredIncrease);
-        
+        setProperties(prevProperties => ({
+            ...prevProperties,
+            chargingHours: newChargingHours,
+            expectedYield: newExpectedYield,
+            desiredIncrease: newDesiredIncrease,
+            requiredKwh: newRequiredKwh,
+            currentValue: newCurrentValue
+        }))
+
+    }, [forecasts]);    
+
+
     function estimatePv(data) {
-        console.log(data);
         // use trapezium rule
         const TIME_GRANULARITY = 0.5; // should just find amount of mins between times instead
         let estimate = 0;
@@ -56,23 +79,23 @@ export default function Estimates(props) {
         <div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Expected Daily Yield</span>
-            <span className="bg-blue-200 text-xl">{expectedYield.toFixed(2)}</span>
+            <span className="bg-blue-200 text-xl">{properties.expectedYield.toFixed(2)}</span>
         </div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Charging Hours</span>
-            <span className="bg-blue-200 text-xl">{chargingHours}</span>
+            <span className="bg-blue-200 text-xl">{properties.chargingHours}</span>
         </div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Desired SoC Increase</span>
-            <span className="bg-blue-200 text-xl">{desiredIncrease.toFixed(2)}%</span>
+            <span className="bg-blue-200 text-xl">{properties.desiredIncrease.toFixed(2)}%</span>
         </div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Required kWh</span>
-            <span className="bg-blue-200 text-xl">{calculatedValues.requiredKwh.toFixed(2)} kWh</span>
+            <span className="bg-blue-200 text-xl">{properties.requiredKwh.toFixed(2)} kWh</span>
         </div>
         <div className="flex flex-col py-1">
             <span className="font-semibold">Set Current Value</span>
-            <span className="bg-blue-200 text-xl">{calculatedValues.currentValue.toFixed(2)} A`</span>
+            <span className="bg-blue-200 text-xl">{properties.currentValue.toFixed(2)} A`</span>
         </div>
         </div>
     )
