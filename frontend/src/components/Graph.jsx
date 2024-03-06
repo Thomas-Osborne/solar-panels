@@ -4,11 +4,6 @@ export default function Graph(props) {
     const lastUpdated = new Date(props.updatedAt).toLocaleString();
     const forecasts = props.data[props.chosenDate];
 
-    const formatDate = (dateTimeString) => {
-        const date = new Date(dateTimeString);
-        return date.toLocaleDateString();
-    }
-
     const formatTime = (dateTimeString) => {
         const date = new Date(dateTimeString);
         const hours = date.getHours();
