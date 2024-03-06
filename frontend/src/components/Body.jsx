@@ -7,14 +7,12 @@ import History from './History';
 import { determineFixedDate, splitData } from '../../../backend/controllers/splitDataController';
 
 import forecastsData from '../../forecasts.json';
-import forecastsData2 from '../../forecasts2.json';
-import forecastsData3 from '../../forecasts3.json';
 
 import React from "react";
 
 export default function Body() {
 
-    const [dbData, setDbData] = React.useState(null);
+    const [test, setTestingData] = React.useState([{id: 1, forecasts: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)}]);
 
     React.useEffect(() => {
         async function fetchForecasts() {
@@ -22,7 +20,7 @@ export default function Body() {
             const json = await res.json();
 
             if (res.ok) {
-                setDbData(json);
+                setTestingData(json);
             }
         }
 
@@ -33,14 +31,9 @@ export default function Body() {
         const d = new Date(date);
         return d.toLocaleString('en-GB', {day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit"})
     }
-
-    const testingData = [
-        {id: 1, data: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)},
-        {id: 2, data: forecastsData2.forecasts, date: formatDatetime(forecastsData2.forecasts[0].period_end)},
-        {id: 3, data: forecastsData3.forecasts, date: formatDatetime(forecastsData3.forecasts[0].period_end)}
-    ];
       
-    const initialData = testingData.find(x => x.id === 1).data;
+    const initialData = test[0].forecasts; // sorted by descending order
+
     const initialKeys = Object.keys(splitData(initialData));
     const initialDate = determineFixedDate(initialData);
 
@@ -53,8 +46,8 @@ export default function Body() {
         setChosenDate(date);
     }
 
-    function updateForecasts(id) {
-        const newData = testingData.find(x => x.id === id).data;
+    function updateForecasts(data) {
+        const newData = data;
         const newDates = Object.keys(splitData(newData))
         const newDate = determineFixedDate(newData);
 
@@ -67,7 +60,7 @@ export default function Body() {
         <main className="h-screen flex flex-col">
             <div className="rounded-xl mx-5 my-1 px-5 h-3/5 flex">
                 <div className="w-1/5 flex flex-col px-2">
-                    <Box name="Previous Records" content={<History oldData={testingData} handleClick={updateForecasts} />} />
+                    <Box name="Previous Records" content={<History oldData={test} handleClick={updateForecasts} />} />
                 </div>
                 <div className="w-4/5 flex flex-col px-2">
                     <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} handleClick={updateDate}/>} />
