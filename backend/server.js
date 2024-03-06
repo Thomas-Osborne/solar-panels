@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors')
+
 const mongoose = require('mongoose');
 const forecastRoutes = require('./routes/forecasts');
 require('dotenv').config();
@@ -6,6 +8,8 @@ require('dotenv').config();
 const app = express();
 
 // middleware
+
+app.use(cors({ origin: `http://localhost:${process.env.FRONTEND_PORT}`}));
 
 app.use(express.json()); // can get json body
 
@@ -22,8 +26,8 @@ mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("Connected to DB")
         // listen
-        app.listen(process.env.PORT, () => {
-            console.log(`Listening on port ${process.env.PORT}`);
+        app.listen(process.env.BACKEND_PORT, () => {
+            console.log(`Listening on port ${process.env.BACKEND_PORT}`);
         })
     })
     .catch((error => {

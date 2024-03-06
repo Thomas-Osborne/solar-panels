@@ -14,6 +14,21 @@ import React from "react";
 
 export default function Body() {
 
+    const [dbData, setDbData] = React.useState(null);
+
+    React.useEffect(() => {
+        async function fetchForecasts() {
+            const res = await fetch('http://localhost:4000/api/forecasts');
+            const json = await res.json();
+
+            if (res.ok) {
+                setDbData(json);
+            }
+        }
+
+        fetchForecasts();
+    }, []);
+
     function formatDatetime(date) {
         const d = new Date(date);
         return d.toLocaleString('en-GB', {day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit"})
