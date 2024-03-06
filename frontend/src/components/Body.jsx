@@ -4,7 +4,7 @@ import Estimates from './Estimates';
 import Graph from './Graph';
 import History from './History';
 
-import { determineFixedDate, splitData } from '../../backend/controllers/splitDataController';
+import { determineFixedDate, splitData } from '../../../backend/controllers/splitDataController';
 
 import forecastsData from '../../forecasts.json';
 import forecastsData2 from '../../forecasts2.json';
