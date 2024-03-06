@@ -19,7 +19,6 @@ export default function Estimates(props) {
 
     let analysedData = [];
 
-    console.log(props.data);
     for (let i = 0; i < forecasts.length; i++) {
         forecasts[i].period_end = new Date(forecasts[i].period_end); // make it a date object for ease
         times.push(forecasts[i].period_end.getTime());
