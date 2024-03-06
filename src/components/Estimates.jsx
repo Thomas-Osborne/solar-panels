@@ -16,6 +16,7 @@ export default function Estimates(props) {
 
     const [properties, setProperties] = React.useState({
         chargingHours: 6,
+        presentSoc: 10,
         expectedYield: 0,
         desiredIncrease: 0,
         requiredKwh: 0,
@@ -24,8 +25,10 @@ export default function Estimates(props) {
     
     React.useEffect(() => {
         const newChargingHours = 6;
+        const newPresentSoc = 10;
+
         const newExpectedYield = estimatePv(forecasts);
-        const newDesiredIncrease = estimateDesiredIncrease(forecasts, newChargingHours, 0);
+        const newDesiredIncrease = estimateDesiredIncrease(forecasts, newChargingHours, newPresentSoc);
 
         const calculatedValues = calculateValues(chargingHours, newDesiredIncrease);
         const newRequiredKwh = calculatedValues.requiredKwh;
@@ -34,6 +37,7 @@ export default function Estimates(props) {
         setProperties(prevProperties => ({
             ...prevProperties,
             chargingHours: newChargingHours,
+            newPresentSoc: 10,
             expectedYield: newExpectedYield,
             desiredIncrease: newDesiredIncrease,
             requiredKwh: newRequiredKwh,
