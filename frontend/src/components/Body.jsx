@@ -32,15 +32,15 @@ export default function Body() {
         return d.toLocaleString('en-GB', {day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit"})
     }
       
-    const initialData = test[0].forecasts; // sorted by descending order
+    const initialData = test[0]; // sorted by descending order
 
-    const initialKeys = Object.keys(splitData(initialData));
-    const initialDate = determineFixedDate(initialData);
+    const initialKeys = Object.keys(splitData(initialData.forecasts));
+    const initialDate = determineFixedDate(initialData.forecasts);
 
     const [dates, setDates] = React.useState(initialKeys);
     const [chosenDate, setChosenDate] = React.useState(initialDate);
 
-    const [forecasts, setForecasts] = React.useState(splitData(initialData));
+    const [forecasts, setForecasts] = React.useState(splitData(initialData.forecasts));
 
     function updateDate(date) {
         setChosenDate(date);
@@ -63,7 +63,7 @@ export default function Body() {
                     <Box name="Previous Records" content={<History oldData={test} handleClick={updateForecasts} />} />
                 </div>
                 <div className="w-4/5 flex flex-col px-2">
-                    <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} handleClick={updateDate}/>} />
+                    <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData.updatedAt} handleClick={updateDate}/>} />
                 </div>
             </div>
             <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
