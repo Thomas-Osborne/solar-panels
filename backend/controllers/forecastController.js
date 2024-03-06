@@ -1,5 +1,6 @@
 const Forecast = require('../models/Forecast');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 async function getForecasts(req, res) {
     const forecasts = await Forecast.find({ }).sort({ createdAt: -1 });
