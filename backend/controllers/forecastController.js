@@ -2,6 +2,13 @@ const Forecast = require('../models/Forecast');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const axios = require('axios');
+const url = `https://api.solcast.com.au/data/forecast/rooftop_pv_power?latitude=${process.env.LATITUDE}&longitude=${process.env.LONGITUDE}&output_parameters=pv_power_rooftop&capacity=${process.env.CAPACITY}&format=json&api_key=${process.env.SOLCAST_API}`;
+
+const config = {
+
+};
+
 async function getForecasts(req, res) {
     const forecasts = await Forecast.find({ }).sort({ createdAt: -1 });
     return res.status(200).json(forecasts);
@@ -67,4 +74,9 @@ async function updateForecast(req, res) {
     }
 }
 
-module.exports = { getForecasts, getForecast, createForecast, deleteForecast, updateForecast };
+async function fetchForecast(req, res) {
+    res.json({message: "this works"});
+}
+
+
+module.exports = { getForecasts, getForecast, createForecast, deleteForecast, updateForecast, fetchForecast };
