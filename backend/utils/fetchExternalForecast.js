@@ -38,7 +38,7 @@ async function attemptFetchingData() {
 
 function isSufficientTime(now, mostRecent) {
     const hoursRequired = 4; // number of hours to check since most recent update.
-    const timeDifference = hoursRequired * 60 * 60 * 1000; // hours required in miliseconds
+    const timeDifference = hoursRequired * 60 * 60 * 1000; // hours required in milliseconds
 
     return now - mostRecent > timeDifference;
 }

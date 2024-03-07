@@ -1,6 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 
+// async function handleClick() {
+//     const response = await fetch('/api/forecasts' + forecasts._id, {
+//         method: 'DELETE'
+//     });
+
+//     const json = await response.json;
+
+//     if (response.ok) {
+
+//     }
+// }
+
 export default function Entry(props) {
     const lastUpdated = new Date(props.data.updatedAt).toLocaleString();
     return (
@@ -13,7 +25,7 @@ export default function Entry(props) {
         </button>
         <button
             className=""
-            onClick={() => console.log("You clicked me!")}>
+            onClick={handleClick}>
             <i className="pr-1 w-6"><FontAwesomeIcon icon={faDeleteLeft} fixedWidth /></i>
         </button>
         </div>
