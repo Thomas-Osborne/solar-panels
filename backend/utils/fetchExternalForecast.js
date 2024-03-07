@@ -9,16 +9,27 @@ const config = {
     }
 };
 
+async function isSufficientTime() {
+    const now = Date.now();
+    const data = await axios.get(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`);
+    const mostRecent = new Date(data.data[0].updatedAt).getTime();
+
+    const hoursRequired = 4; // number of hours to check since most recent update.
+    const timeDifference = hoursRequired * 60 * 60 * 1000; // hours required in miliseconds
+
+    return now - mostRecent > timeDifference;
+}
+
 // Function to fetch data from the external API
 async function fetchExternalForecast() {
     try {
-        // const response = await axios.get(url, config);
-        // console.log(response.data);
-        // await axios.post(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, response.data);
-        // return response.data;
+        const response = await axios.get(url, config);
+        console.log(response.data);
+        await axios.post(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, response.data);
+        return response.data;
     } catch (error) {
         console.error(error);
     }
 }
 
-module.exports = { fetchExternalForecast };
+module.exports = { isSufficientTime, fetchExternalForecast };
