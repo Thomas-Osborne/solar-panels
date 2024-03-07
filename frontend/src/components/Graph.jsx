@@ -1,7 +1,6 @@
 import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 'recharts';
 // import { attemptFetchingData } from '../../../backend/utils/fetchExternalForecast'; 
 
-// console.log(attemptFetchingData);
 export default function Graph(props) {
     const lastUpdated = new Date(props.updatedAt).toLocaleString();
     const forecasts = props.data[props.chosenDate];
@@ -36,7 +35,7 @@ export default function Graph(props) {
     
     return (
         <div className="flex flex-col items-center">
-            <button className="bg-blue-500 text-white text-xl font-medium px-40 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600" onClick={() => console.log("hi")}>Fetch Data</button>
+            <button className="bg-blue-500 text-white text-xl font-medium px-40 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600" onClick={() => console.log("Hello")}>Fetch Data</button>
             <p className="text-gray-700 font-light px-40 pb-3">Last Updated: {lastUpdated}</p>
 
             <div>
