@@ -19,7 +19,6 @@ export default function Body() {
     }, []);
 
     async function fetchForecasts() {
-        console.log("yay!)")
         const res = await fetch('http://localhost:4000/api/forecasts');
         const json = await res.json();
 
