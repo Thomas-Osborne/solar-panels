@@ -1,20 +1,13 @@
 const express = require('express');
 const cors = require('cors')
-const axios = require('axios');
 
 const mongoose = require('mongoose');
 const forecastRoutes = require('./routes/forecasts');
 require('dotenv').config();
 
+const { fetchExternalForecast } = require('./utils/fetchExternalForecast');
+
 const app = express();
-
-const url = `https://api.solcast.com.au/rooftop_sites/57d0-1c18-af49-84b3/forecasts?format=json`;
-
-const config = {
-    headers: {
-        'Authorization': `Bearer ${process.env.SOLCAST_API}`
-    }
-};
 
 // middleware
 
@@ -37,14 +30,10 @@ mongoose.connect(process.env.MONGODB_URI)
         // listen for requests
         app.listen(process.env.BACKEND_PORT, () => {
             console.log(`Listening on port ${process.env.BACKEND_PORT}`);
-            // retrieve data from external API
-            // axios.get(url, config)
-            //     .then(response => {
-            //         console.log(response.data);
-            //     })
-            //     .catch(error => {
-            //         console.log(error);
-            //     })
+            const now = Date.now();
+            console.log(now);
+            // fetchExternalForecast()
+            //     .then(forecasts => console.log(forecasts));
         })
     })
     .catch((error => {
