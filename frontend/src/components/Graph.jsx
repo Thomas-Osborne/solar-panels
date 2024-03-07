@@ -42,6 +42,7 @@ export default function Graph(props) {
                     <button 
                         className="bg-blue-300 text-white text-md font-medium px-3 mx-1 rounded-lg hover:bg-blue-400"
                         onClick={() => props.handleDateClick(date)}
+                        key={date}
                     >
                         {date}
                     </button>)}

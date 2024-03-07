@@ -12,7 +12,7 @@ import React from "react";
 
 export default function Body() {
 
-    const [test, setTestingData] = React.useState([{id: 1, forecasts: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)}]);
+    const [test, setTestingData] = React.useState([{_id: 1, forecasts: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)}]);
 
     React.useEffect(() => {
         fetchForecasts();
