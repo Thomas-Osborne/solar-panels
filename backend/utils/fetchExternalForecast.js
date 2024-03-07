@@ -11,14 +11,14 @@ const config = {
 
 async function attemptFetchingData() {
     console.log("In!");
-    const enoughTime = await isSufficientTime()
-    if (enoughTime) {
-        const forecasts = await fetchExternalForecast();
-        return forecasts;
-    } else {
-        console.log("Insufficient time elapsed to fetch from Solcast.");
-        return;
-    }
+    // const enoughTime = await isSufficientTime()
+    // if (enoughTime) {
+    //     const forecasts = await fetchExternalForecast();
+    //     return forecasts;
+    // } else {
+    //     console.log("Insufficient time elapsed to fetch from Solcast.");
+    //     return;
+    // }
 }
 
 async function isSufficientTime() {
