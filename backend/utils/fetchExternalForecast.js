@@ -10,9 +10,25 @@ const config = {
 };
 
 async function attemptFetchingData() {
-    const enoughTime = await isSufficientTime()
+    const data = await axios.get(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`);
+    const now = Date.now();
+    const mostRecent = new Date(data.data[0].updatedAt).getTime();
+
+    const enoughTime = isSufficientTime(now, mostRecent);
+
     if (enoughTime) {
         const forecasts = await fetchExternalForecast();
+
+        const dateNow = new Date(now);
+        const dateMostRecent = new Date(mostRecent);
+    
+        if (dateNow.getFullYear() === dateMostRecent.getFullYear() && dateNow.getMonth() === dateMostRecent.getMonth() && dateNow.getDate() === dateMostRecent.getDate()) {
+            editLatestForecast(forecasts);
+            console.log("edited... fingers crossed!");
+        } else {
+            addToForecasts(forecasts);
+        }
+
         return forecasts;
     } else {
         console.log("Insufficient time elapsed to fetch from Solcast.");
@@ -20,11 +36,7 @@ async function attemptFetchingData() {
     }
 }
 
-async function isSufficientTime() {
-    const now = Date.now();
-    const data = await axios.get(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`);
-    const mostRecent = new Date(data.data[0].updatedAt).getTime();
-
+function isSufficientTime(now, mostRecent) {
     const hoursRequired = 4; // number of hours to check since most recent update.
     const timeDifference = hoursRequired * 60 * 60 * 1000; // hours required in miliseconds
 
@@ -36,11 +48,18 @@ async function fetchExternalForecast() {
     try {
         const response = await axios.get(url, config);
         console.log(response.data);
-        await axios.post(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, response.data);
         return response.data;
     } catch (error) {
         console.error(error);
     }
+}
+
+async function addToForecasts(data) {
+    await axios.post(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, data);
+}
+
+async function editLatestForecast(data) {
+    await axios.patch(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, data);
 }
 
 module.exports = { attemptFetchingData };

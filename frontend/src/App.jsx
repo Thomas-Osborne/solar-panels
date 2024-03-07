@@ -12,8 +12,7 @@ export default function App() {
         <div className="flex">
           <Sidebar />
           <div className="grow">
-            <Body 
-            />
+            <Body />
             <Footer />
           </div>
         </div>
