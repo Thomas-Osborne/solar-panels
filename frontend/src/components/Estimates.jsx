@@ -48,9 +48,6 @@ export default function Estimates(props) {
 
 
     function estimatePv(data) {
-
-        console.log(properties);
-
         if (data !== undefined) {
             // use trapezium rule
             const TIME_GRANULARITY = 0.5; // should just find amount of mins between times instead
