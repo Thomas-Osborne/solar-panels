@@ -87,7 +87,7 @@ export default function Estimates(props) {
         <div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Expected Daily Yield</span>
-                <span className="bg-blue-200 text-xl">{properties.expectedYield ? properties.expectedYield.toFixed(2) : ""}</span>
+                <span className="bg-blue-200 text-xl">{properties.expectedYield ? `${properties.expectedYield.toFixed(2)} kW` : "0 kW"}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Charging Hours</span>
@@ -95,15 +95,15 @@ export default function Estimates(props) {
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Desired SoC Increase</span>
-                <span className="bg-blue-200 text-xl">{properties.desiredIncrease ? `${properties.desiredIncrease.toFixed(2)}%` : ""}</span>
+                <span className="bg-blue-200 text-xl">{properties.desiredIncrease ? `${properties.desiredIncrease.toFixed(2)}%` : "0%"}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Required kWh</span>
-                <span className="bg-blue-200 text-xl">{properties.requiredKwh ? `${properties.requiredKwh.toFixed(2)} kWh`: ""}</span>
+                <span className="bg-blue-200 text-xl">{properties.requiredKwh ? `${properties.requiredKwh.toFixed(2)} kWh`: "0 kWh"}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Set Current Value</span>
-                <span className="bg-blue-200 text-xl">{properties.currentValue ? `${properties.currentValue.toFixed(2)} A` : ""}</span>
+                <span className="bg-blue-200 text-xl">{properties.currentValue ? `${properties.currentValue.toFixed(2)} A` : "0 A"}</span>
             </div>
         </div>
     )
