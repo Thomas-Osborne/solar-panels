@@ -34,10 +34,11 @@ export default function Graph(props) {
     
     return (
         <div className="flex flex-col items-center">
-            {props.forecasts && <div>
                 <button className="bg-blue-500 text-white text-xl font-medium px-40 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600" onClick={() => props.handleFetchClick()}>Fetch Data</button>
+                
                 <p className="text-gray-700 font-light px-40 pb-3">Last Updated: {lastUpdated}</p>
 
+                {props.forecasts && <div>
                 <div>
                     {props.dates.map(date => 
                         <button 
