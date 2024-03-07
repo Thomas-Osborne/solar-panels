@@ -25,7 +25,8 @@ export default function Entry(props) {
         </button>
         <button
             className=""
-            onClick={handleClick}>
+            // onClick={handleClick}
+            >
             <i className="pr-1 w-6"><FontAwesomeIcon icon={faDeleteLeft} fixedWidth /></i>
         </button>
         </div>
