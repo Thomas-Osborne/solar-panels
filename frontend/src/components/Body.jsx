@@ -35,13 +35,7 @@ export default function Body() {
             const newInitialData = allData[0];
             setInitialData(newInitialData);
 
-            const newDates = Object.keys(splitData(newInitialData.forecasts));
-            setDates(newDates);
-
-            const newChosenDate = determineFixedDate(newInitialData.forecasts);
-            setChosenDate(newChosenDate);
-            
-            setForecasts(splitData(newInitialData.forecasts));
+            updateForecasts(newInitialData.forecasts);
         }
     }, [allData]);
 
