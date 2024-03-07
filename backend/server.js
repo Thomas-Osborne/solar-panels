@@ -8,6 +8,14 @@ require('dotenv').config();
 
 const app = express();
 
+const url = `https://api.solcast.com.au/rooftop_sites/57d0-1c18-af49-84b3/forecasts?format=json`;
+
+const config = {
+    headers: {
+        'Authorization': `Bearer ${process.env.SOLCAST_API}`
+    }
+};
+
 // middleware
 
 app.use(cors({ origin: `http://localhost:${process.env.FRONTEND_PORT}`}));
@@ -26,16 +34,17 @@ app.use('/api/forecasts', forecastRoutes);
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("Connected to DB")
-        // listen
+        // listen for requests
         app.listen(process.env.BACKEND_PORT, () => {
             console.log(`Listening on port ${process.env.BACKEND_PORT}`);
-            axios('http://localhost:4000/api/forecasts')
-                .then(response => {
-                    console.log(response.data[0])
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+            // retrieve data from external API
+            // axios.get(url, config)
+            //     .then(response => {
+            //         console.log(response.data);
+            //     })
+            //     .catch(error => {
+            //         console.log(error);
+            //     })
         })
     })
     .catch((error => {
