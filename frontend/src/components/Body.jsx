@@ -4,16 +4,16 @@ import Estimates from './Estimates';
 import Graph from './Graph';
 import History from './History';
 import { determineFixedDate, splitData } from '../../../backend/controllers/splitDataController';
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 export default function Body() {
-    const [allData, setAllData] = useState([]);
-    const [initialData, setInitialData] = useState(null);
-    const [dates, setDates] = useState([]);
-    const [chosenDate, setChosenDate] = useState("");
-    const [forecasts, setForecasts] = useState({});
+    const [allData, setAllData] = React.useState([]);
+    const [initialData, setInitialData] = React.useState(null);
+    const [dates, setDates] = React.useState([]);
+    const [chosenDate, setChosenDate] = React.useState("");
+    const [forecasts, setForecasts] = React.useState({});
 
-    useEffect(() => {
+    React.useEffect(() => {
         fetchForecasts();
     }, []);
 
@@ -30,7 +30,7 @@ export default function Body() {
         }
     }
 
-    useEffect(() => {
+    React.useEffect(() => {
         if (allData.length > 0) {
             const newInitialData = allData[0];
             setInitialData(newInitialData);
