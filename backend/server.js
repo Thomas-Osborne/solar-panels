@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGODB_URI)
         app.listen(process.env.BACKEND_PORT, () => {
             attemptFetchingData(); // start attempting to fetch immediately
 
-            const timeInterval = 0.5 * 60 * 60 * 1000 // then check every half an hour;
+            const timeInterval = 60 * 60 * 1000 // then check every minute;
             setInterval(() => attemptFetchingData(), timeInterval);
         })
     })
