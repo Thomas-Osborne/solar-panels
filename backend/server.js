@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors')
+const axios = require('axios');
 
 const mongoose = require('mongoose');
 const forecastRoutes = require('./routes/forecasts');
@@ -28,6 +29,13 @@ mongoose.connect(process.env.MONGODB_URI)
         // listen
         app.listen(process.env.BACKEND_PORT, () => {
             console.log(`Listening on port ${process.env.BACKEND_PORT}`);
+            axios('http://localhost:4000/api/forecasts')
+                .then(response => {
+                    console.log(response.data[0])
+                })
+                .catch(error => {
+                    console.log(error);
+                })
         })
     })
     .catch((error => {
