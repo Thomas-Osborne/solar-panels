@@ -70,7 +70,7 @@ export default function Estimates(props) {
     }
 
     function estimateDesiredIncrease(data, expectedYield, presentSoc) {
-        if (data) {
+        if (data !== undefined) {
             const DAILY_USE = 18;
             let battery = TOTAL_BATTERY_CAPACITY / 100 * presentSoc;
 
