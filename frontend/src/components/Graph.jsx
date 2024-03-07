@@ -38,7 +38,7 @@ export default function Graph(props) {
                 
                 <p className="text-gray-700 font-light px-40 pb-3">Last Updated: {lastUpdated}</p>
 
-                {props.data && <div>
+                {props.data && <div className="flex flex-col items-center">
                 <div>
                     {props.dates.map(date => 
                         <button 
