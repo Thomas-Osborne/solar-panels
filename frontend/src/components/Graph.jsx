@@ -36,9 +36,9 @@ export default function Graph(props) {
         <div className="flex flex-col items-center">
                 <button className="bg-blue-500 text-white text-xl font-medium px-40 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600" onClick={() => props.handleFetchClick()}>Fetch Data</button>
                 
-                <p className="text-gray-700 font-light px-40 pb-3">Last Updated: {lastUpdated}</p>
+                {props.lastUpdated && <p className="text-gray-700 font-light px-40 pb-3">Last Updated: {lastUpdated}</p>}
 
-                {props.data && <div className="flex flex-col items-center">
+                {props.data && <div className="flex flex-col items-center py-3">
                 <div>
                     {props.dates.map(date => 
                         <button 
@@ -50,7 +50,7 @@ export default function Graph(props) {
                         </button>)}
                 </div>
 
-                <h3 className="font-bold text-xl py-2">Forecast Data for {props.chosenDate}</h3>
+                {props.chosenDate && <h3 className="font-bold text-xl py-2">Forecast Data for {props.chosenDate}</h3>}
                 <div>
                     <AreaChart width={800} height={300} data={forecasts}>
                         <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}>
