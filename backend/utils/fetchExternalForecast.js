@@ -12,8 +12,10 @@ const config = {
 // Function to fetch data from the external API
 async function fetchExternalForecast() {
     try {
-        const response = await axios.get(url, config);
-        return response.data;
+        // const response = await axios.get(url, config);
+        // console.log(response.data);
+        // await axios.post(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, response.data);
+        // return response.data;
     } catch (error) {
         console.error(error);
     }
