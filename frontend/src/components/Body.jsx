@@ -71,9 +71,9 @@ export default function Body() {
                 <div className="w-1/2 flex flex-col px-2">
                     <Box name="Calculator" content={<Calculator />} />  
                 </div>
-                {/* <div className="w-1/2 flex flex-col px-2">
+                <div className="w-1/2 flex flex-col px-2">
                     <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate} handleClick={updateDate}/>} /> 
-                </div> */}
+                </div>
             </div>
         </main>
     );
