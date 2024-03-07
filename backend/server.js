@@ -29,7 +29,10 @@ mongoose.connect(process.env.MONGODB_URI)
         console.log("Connected to DB")
         // listen for requests
         app.listen(process.env.BACKEND_PORT, () => {
-            attemptFetchingData()
+            attemptFetchingData(); // start attempting to fetch immediately
+
+            const timeInterval = 0.5 * 60 * 60 * 1000 // then check every half an hour;
+            setInterval(() => attemptFetchingData(), timeInterval);
         })
     })
     .catch((error => {
