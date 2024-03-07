@@ -16,7 +16,7 @@ export default function Sidebar() {
                 {Links.map(link => 
                     <li className="px-10 py-1 hover:bg-gray-200" key={link.key}><a href={link.link}>
                         <button>
-                            <i className="pr-1 w-6"><FontAwesomeIcon icon={link.icon} fixedWidth /></i><span className="pl-1">{link.name}</span>
+                            <i className="pr-1 w-6"><FontAwesomeIcon icon={link.icon} fixedWidth /></i><span className="pl-1">{link.key}</span>
                         </button>
                     </a></li>
             )}
