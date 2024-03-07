@@ -16,24 +16,24 @@ async function attemptFetchingData() {
 
     const enoughTime = isSufficientTime(now, mostRecent);
 
-    if (enoughTime) {
-        const forecasts = await fetchExternalForecast();
-
-        const dateNow = new Date(now);
-        const dateMostRecent = new Date(mostRecent);
+    // if (enoughTime) {
+    //     console.log("Yay")
+    //     const forecasts = await fetchExternalForecast();
+    //     const dateNow = new Date(now);
+    //     const dateMostRecent = new Date(mostRecent);
     
-        if (dateNow.getFullYear() === dateMostRecent.getFullYear() && dateNow.getMonth() === dateMostRecent.getMonth() && dateNow.getDate() === dateMostRecent.getDate()) {
-            editLatestForecast(forecasts);
-            console.log("edited... fingers crossed!");
-        } else {
-            addToForecasts(forecasts);
-        }
+    //     if (dateNow.getFullYear() === dateMostRecent.getFullYear() && dateNow.getMonth() === dateMostRecent.getMonth() && dateNow.getDate() === dateMostRecent.getDate()) {
+    //         editLatestForecast(forecasts);
+    //         console.log("edited... fingers crossed!");
+    //     } else {
+    //         addToForecasts(forecasts);
+    //     }
 
-        return forecasts;
-    } else {
-        console.log("Insufficient time elapsed to fetch from Solcast.");
-        return;
-    }
+    //     return forecasts;
+    // } else {
+    //     console.log("Insufficient time elapsed to fetch from Solcast.");
+    //     return;
+    // }
 }
 
 function isSufficientTime(now, mostRecent) {
@@ -47,7 +47,7 @@ function isSufficientTime(now, mostRecent) {
 async function fetchExternalForecast() {
     try {
         const response = await axios.get(url, config);
-        console.log(response.data);
+        console.log(response.status);
         return response.data;
     } catch (error) {
         console.error(error);
