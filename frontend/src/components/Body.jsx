@@ -15,17 +15,18 @@ export default function Body() {
     const [test, setTestingData] = React.useState([{id: 1, forecasts: forecastsData.forecasts, date: formatDatetime(forecastsData.forecasts[0].period_end)}]);
 
     React.useEffect(() => {
-        async function fetchForecasts() {
-            const res = await fetch('http://localhost:4000/api/forecasts');
-            const json = await res.json();
-
-            if (res.ok) {
-                setTestingData(json);
-            }
-        }
-
         fetchForecasts();
     }, []);
+
+    async function fetchForecasts() {
+        console.log("yay!)")
+        const res = await fetch('http://localhost:4000/api/forecasts');
+        const json = await res.json();
+
+        if (res.ok) {
+            setTestingData(json);
+        }
+    }
 
     function formatDatetime(date) {
         const d = new Date(date);
@@ -63,7 +64,7 @@ export default function Body() {
                     <Box name="Previous Records" content={<History oldData={test} handleClick={updateForecasts} />} />
                 </div>
                 <div className="w-4/5 flex flex-col px-2">
-                    <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData.updatedAt} handleClick={updateDate}/>} />
+                    <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData.updatedAt} handleFetchClick={fetchForecasts} handleDateClick={updateDate}/>} />
                 </div>
             </div>
             <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
