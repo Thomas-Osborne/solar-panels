@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const forecastRoutes = require('./routes/forecasts');
 require('dotenv').config();
 
-const { isSufficientTime, fetchExternalForecast } = require('./utils/fetchExternalForecast');
+const { attemptFetchingData } = require('./utils/fetchExternalForecast');
 
 const app = express();
 
@@ -29,15 +29,7 @@ mongoose.connect(process.env.MONGODB_URI)
         console.log("Connected to DB")
         // listen for requests
         app.listen(process.env.BACKEND_PORT, () => {
-            isSufficientTime()
-                .then(result => {
-                    if (result) {
-                        fetchExternalForecast()
-                            .then(forecasts => console.log(forecasts));
-                    } else {
-                        console.log("Insufficient time elapsed to fetch from Solcast.");
-                    }
-                });
+            attemptFetchingData()
         })
     })
     .catch((error => {

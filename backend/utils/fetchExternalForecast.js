@@ -9,6 +9,18 @@ const config = {
     }
 };
 
+async function attemptFetchingData() {
+    console.log("In!");
+    const enoughTime = await isSufficientTime()
+    if (enoughTime) {
+        const forecasts = await fetchExternalForecast();
+        return forecasts;
+    } else {
+        console.log("Insufficient time elapsed to fetch from Solcast.");
+        return;
+    }
+}
+
 async function isSufficientTime() {
     const now = Date.now();
     const data = await axios.get(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`);
@@ -32,4 +44,4 @@ async function fetchExternalForecast() {
     }
 }
 
-module.exports = { isSufficientTime, fetchExternalForecast };
+module.exports = { attemptFetchingData };
