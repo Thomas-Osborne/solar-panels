@@ -3,6 +3,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function Entry(props) {
 
+    console.log(props.chosenDate);
+    
     async function handleDelete() {
         const res = await fetch(`http://localhost:4000/api/forecasts/${props.id}`, {
             method: 'DELETE'
@@ -17,11 +19,11 @@ export default function Entry(props) {
     return (
         <div className={
             `text-white text-left p-3 my-1 w-full border rounded-md flex justify-between
-            ${props.lastClicked ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`}>
+            ${props.chosenDate === lastUpdated ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`}>
         <button 
             className=""
             onClick={() => props.handleClick(props.data.forecasts)}
-            disabled={props.lastClicked}
+            disabled={props.chosenDate === lastUpdated}
         >
             <h1 className="font-semibold">{lastUpdated}</h1>
         </button>
