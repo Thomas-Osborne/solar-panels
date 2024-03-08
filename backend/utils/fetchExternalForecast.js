@@ -17,7 +17,6 @@ async function attemptFetchingData() {
     const enoughTime = isSufficientTime(now, mostRecent);
 
     // if (enoughTime) {
-    //     console.log("Yay")
     //     const forecasts = await fetchExternalForecast();
     //     const dateNow = new Date(now);
     //     const dateMostRecent = new Date(mostRecent);
@@ -47,7 +46,6 @@ function isSufficientTime(now, mostRecent) {
 async function fetchExternalForecast() {
     try {
         const response = await axios.get(url, config);
-        console.log(response.status);
         return response.data;
     } catch (error) {
         console.error(error);
