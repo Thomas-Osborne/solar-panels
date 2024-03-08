@@ -20,7 +20,7 @@ export default function Body() {
             maxChargingHours: 6,
             dailyUsage: 18,
             presentSoc: 10,
-            averageBatteryVoltage: 50,
+            averageBatteryVoltage: 52,
             maxCurrent: 70,
         }
     )
