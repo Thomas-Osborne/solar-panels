@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function Entry(props) {
 
@@ -26,7 +26,7 @@ export default function Entry(props) {
             className=""
             onClick={handleDelete}
             >
-            <i className="pr-1 w-6"><FontAwesomeIcon icon={faDeleteLeft} fixedWidth /></i>
+            <i className="pr-1 w-6"><FontAwesomeIcon icon={faTrash} fixedWidth /></i>
         </button>
         </div>
     )
