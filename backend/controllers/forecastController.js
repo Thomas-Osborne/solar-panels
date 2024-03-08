@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 async function getForecasts(req, res) {
-    const forecasts = await Forecast.find({ }).sort({ createdAt: -1 });
+    const forecasts = await Forecast.find({ }).sort({ updatedAt: -1 });
     return res.status(200).json(forecasts);
 }
 

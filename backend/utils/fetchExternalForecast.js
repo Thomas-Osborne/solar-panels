@@ -16,23 +16,24 @@ async function attemptFetchingData() {
 
     const enoughTime = isSufficientTime(now, mostRecent);
 
-    // if (enoughTime) {
-    //     const forecasts = await fetchExternalForecast();
-    //     const dateNow = new Date(now);
-    //     const dateMostRecent = new Date(mostRecent);
+    if (enoughTime) {
+        const forecasts = await fetchExternalForecast();
+        const dateNow = new Date(now);
+        const dateMostRecent = new Date(mostRecent);
     
-    //     if (dateNow.getFullYear() === dateMostRecent.getFullYear() && dateNow.getMonth() === dateMostRecent.getMonth() && dateNow.getDate() === dateMostRecent.getDate()) {
-    //         editLatestForecast(forecasts);
-    //         console.log("edited... fingers crossed!");
-    //     } else {
-    //         addToForecasts(forecasts);
-    //     }
+        if (dateNow.getFullYear() === dateMostRecent.getFullYear() && dateNow.getMonth() === dateMostRecent.getMonth() && dateNow.getDate() === dateMostRecent.getDate()) {
+            const latestId = data[0]._id;
+            editLatestForecast(forecasts, latestId);
+            console.log("edited... fingers crossed!");
+        } else {
+            addToForecasts(forecasts);
+        }
 
-    //     return forecasts;
-    // } else {
-    //     console.log("Insufficient time elapsed to fetch from Solcast.");
-    //     return;
-    // }
+        return forecasts;
+    } else {
+        console.log("Insufficient time elapsed to fetch from Solcast.");
+        return;
+    }
 }
 
 function isSufficientTime(now, mostRecent) {
@@ -56,8 +57,8 @@ async function addToForecasts(data) {
     await axios.post(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, data);
 }
 
-async function editLatestForecast(data) {
-    await axios.patch(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts`, data);
+async function editLatestForecast(data, id) {
+    await axios.patch(`http://localhost:${process.env.BACKEND_PORT}/api/forecasts/${id}`, data);
 }
 
 module.exports = { attemptFetchingData };
