@@ -3,7 +3,6 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function Entry(props) {
 
-    console.log(props.chosenDate);    
     async function handleDelete() {
         const res = await fetch(`http://localhost:4000/api/forecasts/${props.id}`, {
             method: 'DELETE'
@@ -15,7 +14,6 @@ export default function Entry(props) {
     }
 
     const lastUpdated = new Date(props.data.updatedAt).toLocaleDateString();
-    console.log(lastUpdated);
 
     return (
         <div className={

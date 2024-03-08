@@ -18,7 +18,6 @@ export default function Calculator()  {
     )
 
     function handleChange(event) {
-
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
@@ -58,10 +57,7 @@ export default function Calculator()  {
                         value={formData.desiredIncrease}
                     />
                 </div>
-                <br />
-                <div className="flex justify-center">
-                    <input type="submit"  className="bg-blue-500 text-white text-xl font-medium px-10 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600" />
-                </div>
+                <hr className="border-t border-black my-2" />
             </form>
 
             <div>
