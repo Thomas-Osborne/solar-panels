@@ -82,7 +82,7 @@ export default function Estimates(props) {
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Charging Hours</span>
-                <span className="bg-blue-200 text-xl">{properties.chargingHours}</span>
+                <span className="bg-blue-200 text-xl">{properties.chargingHours ? properties.chargingHours : "0"}</span>
             </div>
             <div className="flex flex-col py-1">
                 <span className="font-semibold">Desired SoC Increase</span>
