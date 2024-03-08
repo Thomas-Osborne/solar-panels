@@ -4,7 +4,13 @@ import { faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 export default function Entry(props) {
 
     async function handleDelete() {
-        console.log(props.id);
+        const res = await fetch(`http://localhost:4000/api/forecasts/${props.id}`, {
+            method: 'DELETE'
+        });
+
+        if (!res.ok) {
+            throw new Error('Failed to delete forecast.');
+        }
     }
 
     const lastUpdated = new Date(props.data.updatedAt).toLocaleString();
