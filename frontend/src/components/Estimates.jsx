@@ -1,4 +1,4 @@
-import { calculateValues } from '../../../backend/controllers/calculationController';
+import { calculateChargingHours, calculateValues } from '../../../backend/controllers/calculationController';
 
 import React from 'react';
 
@@ -15,8 +15,8 @@ export default function Estimates(props) {
     })
     
     React.useEffect(() => {
-        const newChargingHours = 6;
-        const newPresentSoc = 10;
+        const newChargingHours = calculateChargingHours(props.configuredValues.maxChargingHours, props.configuredValues.presentHours);
+        const newPresentSoc = props.configuredValues.presentSoc;
 
         const newExpectedYield = estimatePv(forecasts);
         const newDesiredIncrease = estimateDesiredIncrease(forecasts, newChargingHours, newPresentSoc);

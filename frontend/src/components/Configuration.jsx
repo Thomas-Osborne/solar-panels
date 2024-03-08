@@ -71,14 +71,14 @@ export default function Configuration(props)  {
                     />
                 </div>
                 <div className="flex flex-col py-1">
-                    <label className="font-semibold">Past Midnight TODO</label>
+                    <label className="font-semibold">Present Hour (24-hour)</label>
                     <input 
                         className="bg-blue-200 text-xl" 
                         type="text"
                         placeholder="Type true or false..."
                         onChange={props.handleChange}
-                        name="pastMidnight"
-                        value={props.configuredValues.pastMidnight}
+                        name="presentHours"
+                        value={props.configuredValues.presentHours}
                     />
                 </div>
             </form>

@@ -1,3 +1,15 @@
+function calculateChargingHours(maxChargingHours, presentHours) {
+    let newChargingHours;
+
+    if (presentHours >= 0 && presentHours <= 6) {
+        newChargingHours = maxChargingHours - presentHours;
+    } else {
+        newChargingHours = maxChargingHours;
+    }
+
+    return newChargingHours;
+}
+
 function calculateValues(chargingHours, desiredIncrease, configuredValues) {
     let newRequiredKwh = (configuredValues.totalBatteryCapacity) * (desiredIncrease) / 100;
     let newKwPerHourRate = (newRequiredKwh) / Math.min(chargingHours, configuredValues.maxChargingHours);
@@ -9,4 +21,4 @@ function calculateValues(chargingHours, desiredIncrease, configuredValues) {
 }
 
 
-export { calculateValues };
+export { calculateChargingHours, calculateValues };

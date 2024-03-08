@@ -8,6 +8,7 @@ import React from "react";
 import Configuration from './Configuration';
 
 export default function Body() {
+
     const [allData, setAllData] = React.useState([]);
     const [initialData, setInitialData] = React.useState(null);
     const [dates, setDates] = React.useState([]);
@@ -22,7 +23,7 @@ export default function Body() {
             presentSoc: 10,
             averageBatteryVoltage: 52,
             maxCurrent: 70,
-            pastMidnight: false,
+            presentHours: new Date().getHours(),
         }
     )
 
