@@ -14,6 +14,23 @@ export default function Body() {
     const [chosenDate, setChosenDate] = React.useState("");
     const [forecasts, setForecasts] = React.useState({});
 
+    const [configuredValues, setConfiguredValues] = React.useState(
+        {
+            totalBatteryCapacity: 24.3,
+            maxChargingHours: 6,
+            dailyUsage: 18,
+        }
+    )
+
+    function handleConfiguredValueChange(event) {
+        setConfiguredValues(prevConfiguredValues => {
+            return {
+                ...prevConfiguredValues,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
     React.useEffect(() => {
         fetchForecasts();
     }, []);
@@ -62,7 +79,7 @@ export default function Body() {
                     <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData?.updatedAt} handleFetchClick={fetchForecasts} handleDateClick={updateDate}/>} />
                 </div>
                 <div className="w-1/5 flex flex-col px-2">
-                    <Box name="Configure Values" content={<Configuration />} />
+                    <Box name="Configure Values" content={<Configuration configuredValues={configuredValues} handleChange={handleConfiguredValueChange}/>} />
                 </div>
             </div>
             <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
@@ -70,7 +87,7 @@ export default function Body() {
                     <Box name="Calculator" content={<Calculator />} />  
                 </div>
                 <div className="w-1/2 flex flex-col px-2">
-                    <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate} handleClick={updateDate}/>} /> 
+                    <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate} handleClick={updateDate} configuredValues={configuredValues}/>} /> 
                 </div>
             </div>
         </main>

@@ -1,23 +1,8 @@
 import React from "react";
 
-export default function Configuration()  {
+export default function Configuration(props)  {
 
-    const [formData, setFormData] = React.useState(
-        {
-            totalBatteryCapacity: 24.3,
-            maxChargingHours: 6,
-            dailyUsage: 18,
-        }
-    )
-
-    function handleChange(event) {
-        setFormData(prevFormData => {
-            return {
-                ...prevFormData,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
+    console.log(props.configuredValues);
     
     return (
         <div>
@@ -28,9 +13,9 @@ export default function Configuration()  {
                         className="bg-blue-200 text-xl" 
                         type="number"
                         placeholder="Total battery capacity..."
-                        onChange={handleChange}    
+                        onChange={props.handleChange}    
                         name="totalBatteryCapacity"
-                        value={formData.totalBatteryCapacity}
+                        value={props.configuredValues.totalBatteryCapacity}
                     />
                 </div>
                 <div className="flex flex-col py-1">
@@ -39,9 +24,9 @@ export default function Configuration()  {
                         className="bg-blue-200 text-xl" 
                         type="number"
                         placeholder="Maximum charging hours..."
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         name="maxChargingHours"
-                        value={formData.maxChargingHours}
+                        value={props.configuredValues.maxChargingHours}
                     />
                 </div>
                 <div className="flex flex-col py-1">
@@ -50,9 +35,9 @@ export default function Configuration()  {
                         className="bg-blue-200 text-xl" 
                         type="number"
                         placeholder="Daily usage..."
-                        onChange={handleChange}
+                        onChange={props.handleChange}
                         name="dailyUsage"
-                        value={formData.dailyUsage}
+                        value={props.configuredValues.dailyUsage}
                     />
                 </div>
             </form>
