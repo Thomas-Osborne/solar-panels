@@ -3,15 +3,6 @@ import { calculateValues } from '../../../backend/controllers/calculationControl
 import React from 'react';
 
 export default function Estimates(props) {
-
-    const NUMBER_OF_FORECASTS = 48;
-    const TOTAL_BATTERY_CAPACITY = 24.3;
-    const MAX_CHARGING_HOURS = 6;
-
-    const DAILY_USAGE = 18;
-
-    let chargingHours = 6;
-
     const forecasts = props.data[props.chosenDate];
 
     const [properties, setProperties] = React.useState({
@@ -30,7 +21,7 @@ export default function Estimates(props) {
         const newExpectedYield = estimatePv(forecasts);
         const newDesiredIncrease = estimateDesiredIncrease(forecasts, newChargingHours, newPresentSoc);
 
-        const calculatedValues = calculateValues(chargingHours, newDesiredIncrease);
+        const calculatedValues = calculateValues(properties.chargingHours, newDesiredIncrease);
         const newRequiredKwh = calculatedValues.requiredKwh;
         const newCurrentValue = calculatedValues.currentValue;
 
@@ -44,7 +35,7 @@ export default function Estimates(props) {
             currentValue: newCurrentValue
         }))
 
-    }, [forecasts]);    
+    }, [forecasts, props.configuredValues]);    
 
 
     function estimatePv(data) {
@@ -72,9 +63,9 @@ export default function Estimates(props) {
     function estimateDesiredIncrease(data, expectedYield, presentSoc) {
         if (data !== undefined) {
             const DAILY_USE = 18;
-            let battery = TOTAL_BATTERY_CAPACITY / 100 * presentSoc;
+            let battery = props.configuredValues.totalBatteryCapacity / 100 * presentSoc;
 
-            const socIncrease = (battery + (DAILY_USE - expectedYield)) / TOTAL_BATTERY_CAPACITY * 100;
+            const socIncrease = (battery + (DAILY_USE - expectedYield)) / props.configuredValues.totalBatteryCapacity * 100;
             return socIncrease;
         }
     }

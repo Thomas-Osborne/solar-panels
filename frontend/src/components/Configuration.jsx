@@ -1,9 +1,6 @@
 import React from "react";
 
-export default function Configuration(props)  {
-
-    console.log(props.configuredValues);
-    
+export default function Configuration(props)  {  
     return (
         <div>
             <form>
