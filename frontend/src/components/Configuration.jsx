@@ -37,6 +37,39 @@ export default function Configuration(props)  {
                         value={props.configuredValues.dailyUsage}
                     />
                 </div>
+                <div className="flex flex-col py-1">
+                    <label className="font-semibold">Present SoC</label>
+                    <input 
+                        className="bg-blue-200 text-xl" 
+                        type="number"
+                        placeholder="Present SoC value..."
+                        onChange={props.handleChange}
+                        name="presentSoc"
+                        value={props.configuredValues.presentSoc}
+                    />
+                </div>
+                <div className="flex flex-col py-1">
+                    <label className="font-semibold">Average Battery Voltage</label>
+                    <input 
+                        className="bg-blue-200 text-xl" 
+                        type="number"
+                        placeholder="Average Battery Voltage..."
+                        onChange={props.handleChange}
+                        name="averageBatteryVoltage"
+                        value={props.configuredValues.averageBatteryVoltage}
+                    />
+                </div>
+                <div className="flex flex-col py-1">
+                    <label className="font-semibold">Maximum Current Set Value</label>
+                    <input 
+                        className="bg-blue-200 text-xl" 
+                        type="number"
+                        placeholder="Maximum current set value..."
+                        onChange={props.handleChange}
+                        name="maxCurrent"
+                        value={props.configuredValues.maxCurrent}
+                    />
+                </div>
             </form>
         </div>
     )

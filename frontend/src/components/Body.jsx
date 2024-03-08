@@ -19,6 +19,9 @@ export default function Body() {
             totalBatteryCapacity: 24.3,
             maxChargingHours: 6,
             dailyUsage: 18,
+            presentSoc: 10,
+            averageBatteryVoltage: 50,
+            maxCurrent: 70,
         }
     )
 
@@ -84,7 +87,7 @@ export default function Body() {
             </div>
             <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
                 <div className="w-1/2 flex flex-col px-2">
-                    <Box name="Calculator" content={<Calculator />} />  
+                    <Box name="Calculator" content={<Calculator configuredValues={configuredValues}/>} />  
                 </div>
                 <div className="w-1/2 flex flex-col px-2">
                     <Box name="Estimates" content={<Estimates data={forecasts} chosenDate={chosenDate} handleClick={updateDate} configuredValues={configuredValues}/>} /> 

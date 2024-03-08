@@ -1,7 +1,7 @@
 import React from "react";
 import { calculateValues } from '../../../backend/controllers/calculationController';
 
-export default function Calculator()  {
+export default function Calculator(props)  {
 
     const [formData, setFormData] = React.useState(
         {
@@ -28,7 +28,8 @@ export default function Calculator()  {
         setCalculations(
             calculateValues(
                 event.target.name === 'chargingHours' ? event.target.value : formData.chargingHours,
-                event.target.name === 'desiredIncrease' ? event.target.value : formData.desiredIncrease
+                event.target.name === 'desiredIncrease' ? event.target.value : formData.desiredIncrease,
+                props.configuredValues
         ));
     }
     

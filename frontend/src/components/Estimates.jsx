@@ -21,14 +21,14 @@ export default function Estimates(props) {
         const newExpectedYield = estimatePv(forecasts);
         const newDesiredIncrease = estimateDesiredIncrease(forecasts, newChargingHours, newPresentSoc);
 
-        const calculatedValues = calculateValues(properties.chargingHours, newDesiredIncrease);
+        const calculatedValues = calculateValues(properties.chargingHours, newDesiredIncrease, props.configuredValues);
         const newRequiredKwh = calculatedValues.requiredKwh;
         const newCurrentValue = calculatedValues.currentValue;
 
         setProperties(prevProperties => ({
             ...prevProperties,
             chargingHours: newChargingHours,
-            newPresentSoc: 10,
+            presentSoc: newPresentSoc,
             expectedYield: newExpectedYield,
             desiredIncrease: newDesiredIncrease,
             requiredKwh: newRequiredKwh,
