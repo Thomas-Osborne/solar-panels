@@ -55,7 +55,7 @@ export default function Body() {
         <main className="h-screen flex flex-col">
             <div className="rounded-xl mx-5 my-1 px-5 h-3/5 flex">
                 <div className="w-1/5 flex flex-col px-2">
-                    <Box name="Previous Records" content={<History oldData={allData} handleClick={updateForecasts} />} />
+                    <Box name="Previous Records" content={<History oldData={allData} chosenDate={chosenDate} handleClick={updateForecasts} />} />
                 </div>
                 <div className="w-4/5 flex flex-col px-2">
                     <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData?.updatedAt} handleFetchClick={fetchForecasts} handleDateClick={updateDate}/>} />

@@ -15,10 +15,13 @@ export default function Entry(props) {
 
     const lastUpdated = new Date(props.data.updatedAt).toLocaleDateString();
     return (
-        <div className="bg-blue-500 text-white text-left p-3 my-1 w-full border rounded-md flex justify-between hover:bg-blue-600">
+        <div className={
+            `text-white text-left p-3 my-1 w-full border rounded-md flex justify-between
+            ${props.lastClicked ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`}>
         <button 
             className=""
             onClick={() => props.handleClick(props.data.forecasts)}
+            disabled={props.lastClicked}
         >
             <h1 className="font-semibold">{lastUpdated}</h1>
         </button>
