@@ -70,6 +70,17 @@ export default function Configuration(props)  {
                         value={props.configuredValues.maxCurrent}
                     />
                 </div>
+                <div className="flex flex-col py-1">
+                    <label className="font-semibold">Past Midnight TODO</label>
+                    <input 
+                        className="bg-blue-200 text-xl" 
+                        type="text"
+                        placeholder="Type true or false..."
+                        onChange={props.handleChange}
+                        name="pastMidnight"
+                        value={props.configuredValues.pastMidnight}
+                    />
+                </div>
             </form>
         </div>
     )

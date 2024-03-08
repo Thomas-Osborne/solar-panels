@@ -22,6 +22,7 @@ export default function Body() {
             presentSoc: 10,
             averageBatteryVoltage: 52,
             maxCurrent: 70,
+            pastMidnight: false,
         }
     )
 
