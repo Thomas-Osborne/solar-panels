@@ -1,10 +1,13 @@
+import React from 'react';
+
 import { Area, AreaChart, XAxis, YAxis, Label, Tooltip, CartesianGrid } from 'recharts';
 
 export default function Graph(props) {
+
     const lastUpdated = new Date(props.updatedAt).toLocaleString();
     const forecasts = props.data[props.chosenDate];
 
-    const formatTime = (dateTimeString) => {
+    function formatTime(dateTimeString) {
         const date = new Date(dateTimeString);
         const hours = date.getHours();
         const minutes = date.getMinutes();
@@ -42,8 +45,12 @@ export default function Graph(props) {
                 <div>
                     {props.dates.map(date => 
                         <button 
-                            className="bg-blue-300 text-white text-md font-medium px-3 mx-1 rounded-lg hover:bg-blue-400"
+                            className={
+                                `text-white text-md font-medium px-3 mx-1 rounded-lg
+                                ${date === props.chosenDate ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`
+                            }
                             onClick={() => props.handleDateClick(date)}
+                            disabled={date === props.chosenDate}
                             key={date}
                         >
                             {date}
