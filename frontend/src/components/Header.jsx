@@ -5,7 +5,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 export default function Header(props) {
 
     const Links = [
-        {link: 'https://github.com/Thomas-Osborne', icon: faGithub, key: 'GitHub'},
+        {link: 'https://www.github.com/Thomas-Osborne', icon: faGithub, key: 'GitHub'},
         {link: 'https://www.linkedin.com/in/tom-osborne-716619288/', icon: faLinkedin, key: 'LinkedIn'},
         {link: 'mailto: thomas.m.osborne.2@gmail.com', icon:faEnvelope, key: 'Email'}
     ];
