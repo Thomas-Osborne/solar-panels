@@ -5,6 +5,7 @@ import Graph from './Graph';
 import History from './History';
 import { determineFixedDate, splitData } from '../../../backend/controllers/splitDataController';
 import React from "react";
+import Configuration from './Configuration';
 
 export default function Body() {
     const [allData, setAllData] = React.useState([]);
@@ -61,7 +62,7 @@ export default function Body() {
                     <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData?.updatedAt} handleFetchClick={fetchForecasts} handleDateClick={updateDate}/>} />
                 </div>
                 <div className="w-1/5 flex flex-col px-2">
-                    <Box name="Configure Values" />
+                    <Box name="Configure Values" content={<Configuration />} />
                 </div>
             </div>
             <div className="rounded-xl mx-5 my-1 px-5 h-2/5 flex">
