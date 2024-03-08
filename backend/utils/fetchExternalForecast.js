@@ -22,9 +22,9 @@ async function attemptFetchingData() {
         const dateMostRecent = new Date(mostRecent);
     
         if (dateNow.getFullYear() === dateMostRecent.getFullYear() && dateNow.getMonth() === dateMostRecent.getMonth() && dateNow.getDate() === dateMostRecent.getDate()) {
-            const latestId = data[0]._id;
+            const latestId = data.data[0]._id;
+            console.log(latestId);
             editLatestForecast(forecasts, latestId);
-            console.log("edited... fingers crossed!");
         } else {
             addToForecasts(forecasts);
         }
