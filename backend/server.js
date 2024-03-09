@@ -3,6 +3,8 @@ const cors = require('cors')
 
 const mongoose = require('mongoose');
 const forecastRoutes = require('./routes/forecasts');
+const userRoutes = require('./routes/users');
+
 require('dotenv').config();
 
 const { attemptFetchingData } = require('./utils/fetchExternalForecast');
@@ -22,6 +24,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/forecasts', forecastRoutes);
+app.use('/api/users', userRoutes);
 
 // connect to mongodb
 mongoose.connect(process.env.MONGODB_URI)

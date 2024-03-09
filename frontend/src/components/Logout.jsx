@@ -30,7 +30,7 @@ export default function Logout(props) {
         <div className="py-4 flex">
         <button 
           className="bg-blue-500 text-white text-xl font-medium px-10 py-3 mb-1 mt-1 mx-2 rounded-lg hover:bg-blue-600"
-          onClick={() => console.log("Log out")}
+          onClick={props.handleLogout}
         >Yes, I'm sure!</button>
         <button 
           className="bg-blue-500 text-white text-xl font-medium px-10 py-3 mb-1 mt-1 mx-2 rounded-lg hover:bg-blue-600"

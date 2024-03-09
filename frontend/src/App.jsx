@@ -17,6 +17,11 @@ export default function App() {
     setIsLoggedIn(true);
   }
 
+  function handleLogout(event) {
+    event.preventDefault();
+    setIsLoggedIn(false);
+  }
+
   const [isOpen, setIsOpen] = React.useState(false);
 
 
@@ -32,7 +37,7 @@ export default function App() {
     <>
       {isLoggedIn
         ? <div>
-            <Logout isOpen={isOpen} openModal={openModal} closeModal={closeModal}/>
+            <Logout isOpen={isOpen} openModal={openModal} closeModal={closeModal} handleLogout={handleLogout}/>
             <Header />
             <div className="flex">
               <Sidebar openModal={openModal}/>
