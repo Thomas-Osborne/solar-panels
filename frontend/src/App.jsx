@@ -2,6 +2,7 @@ import Body from './components/Body';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Login from './components/Login'
 import Logout from './components/Logout';
 
 import React from 'react';
@@ -9,7 +10,13 @@ import React from 'react';
 export default function App() {
 
 
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  function handleLogin(event) {
+    event.preventDefault();
+    setIsLoggedIn(true);
+  }
+
   const [isOpen, setIsOpen] = React.useState(false);
 
 
@@ -35,7 +42,15 @@ export default function App() {
               </div>
             </div>
           </div>
-        : <div> Please sign in. </div>}
+        : <div> 
+            <Header />
+            <div className="flex">
+              <div className="grow">
+                <Login handleLogin={handleLogin}/>
+                <Footer />
+              </div>
+            </div>
+          </div>}
     </>
   )
 }
