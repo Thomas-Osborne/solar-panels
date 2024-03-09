@@ -41,38 +41,38 @@ export default function Graph(props) {
                 
                 {props.lastUpdated && <p className="text-gray-700 font-light px-40 pb-3">Last Updated: {lastUpdated}</p>}
 
-                {props.data && <div className="flex flex-col items-center py-3">
-                <div>
-                    {props.dates.map(date => 
-                        <button 
-                            className={
-                                `text-white text-md font-medium px-3 mx-1 rounded-lg
-                                ${date === props.chosenDate ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`
-                            }
-                            onClick={() => props.handleDateClick(date)}
-                            disabled={date === props.chosenDate}
-                            key={date}
-                        >
-                            {date}
-                        </button>)}
-                </div>
+                {forecasts && <div className="flex flex-col items-center py-3">
+                    <div>
+                        {props.dates.map(date => 
+                            <button 
+                                className={
+                                    `text-white text-md font-medium px-3 mx-1 rounded-lg
+                                    ${date === props.chosenDate ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`
+                                }
+                                onClick={() => props.handleDateClick(date)}
+                                disabled={date === props.chosenDate}
+                                key={date}
+                            >
+                                {date}
+                            </button>)}
+                    </div>
 
-                {props.chosenDate && <h3 className="font-bold text-xl py-2">Forecast Data for {props.chosenDate}</h3>}
-                <div>
-                    <AreaChart width={600} height={300} data={forecasts}>
-                        <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}>
-                            <Label value="Time" position="insideBottom" offset={-5}/>
-                        </XAxis>
-                        <YAxis>
-                            <Label value="Power Output (kW)" angle={-90} />
-                        </YAxis>
-                        <Area type="monotone" dataKey="pv_estimate90"></Area>
-                        <Area type="monotone" dataKey="pv_estimate"></Area>
-                        <Area type="monotone" dataKey="pv_estimate10"></Area>
-                        <Tooltip content={<CustomTooltip />}/>
-                        <CartesianGrid vertical={false}/>
-                    </AreaChart>
-                </div>
+                    {props.chosenDate && <h3 className="font-bold text-xl py-2">Forecast Data for {props.chosenDate}</h3>}
+                    <div>
+                        <AreaChart width={600} height={300} data={forecasts}>
+                            <XAxis dataKey="period_end" tickLine={false} interval={0} tickFormatter={str => formatTime(str)}>
+                                <Label value="Time" position="insideBottom" offset={-5}/>
+                            </XAxis>
+                            <YAxis>
+                                <Label value="Power Output (kW)" angle={-90} />
+                            </YAxis>
+                            <Area type="monotone" dataKey="pv_estimate90"></Area>
+                            <Area type="monotone" dataKey="pv_estimate"></Area>
+                            <Area type="monotone" dataKey="pv_estimate10"></Area>
+                            <Tooltip content={<CustomTooltip />}/>
+                            <CartesianGrid vertical={false}/>
+                        </AreaChart>
+                    </div>
             </div>}
         </div>
     )
