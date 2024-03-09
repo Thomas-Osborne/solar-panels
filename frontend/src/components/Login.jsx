@@ -20,7 +20,7 @@ export default function Login(props)  {
     
     return (
         <div className="flex justify-center items-center my-10 w-screen">
-            <form className="w-1/4 bg-gray-200 p-4 text-center rounded-lg">
+            <form onSubmit={props.handleLogin} className="w-1/4 bg-gray-200 p-4 text-center rounded-lg">
                 <div className="flex flex-col py-1">
                     <label className="font-semibold">Username</label>
                     <input 
@@ -48,7 +48,6 @@ export default function Login(props)  {
                     <input 
                         type="submit" 
                         className="bg-blue-500 text-white text-xl font-medium px-10 py-3 mb-1 mt-1 rounded-lg cursor-pointer hover:bg-blue-600"
-                        onClick={props.handleLogin}
                     />
                 </div>
                 </form>
