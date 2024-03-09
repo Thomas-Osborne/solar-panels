@@ -3,11 +3,18 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'; // Correct ic
 
 // Inspired by https://www.youtube.com/watch?v=dEGbXY-8YtU
 export default function Logout(props) {
+
+  function handleOutsideClick(event) {
+    if (event.target === event.currentTarget) {
+      props.closeModal();
+    }
+  }
   return (
     <div
       className={`fixed inset-0 flex justify-center items-center transition-opacity ${
         props.isOpen ? 'visible bg-black/20' : 'invisible'
       }`}
+      onClick={handleOutsideClick}
     >
       <div
         className={`bg-white rounded-xl shadow-md p-6 transition-all ${
