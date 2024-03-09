@@ -47,7 +47,7 @@ export default function Login(props)  {
                 <div className="flex justify-center">
                     <input 
                         type="submit" 
-                        className="bg-blue-500 text-white text-xl font-medium px-10 py-3 mb-1 mt-1 rounded-lg hover:bg-blue-600"
+                        className="bg-blue-500 text-white text-xl font-medium px-10 py-3 mb-1 mt-1 rounded-lg cursor-pointer hover:bg-blue-600"
                         onClick={props.handleLogin}
                     />
                 </div>
