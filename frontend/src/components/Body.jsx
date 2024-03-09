@@ -9,7 +9,6 @@ import Configuration from './Configuration';
 
 export default function Body() {
     
-
     const [allData, setAllData] = React.useState([]);
     const [initialData, setInitialData] = React.useState(null);
     const [dates, setDates] = React.useState([]);
@@ -59,8 +58,7 @@ export default function Body() {
         if (allData.length > 0) {
             const newInitialData = allData[0];
             setInitialData(newInitialData);
-            updateForecasts(newInitialData.forecasts);
-            setChosenRecordId(newInitialData._id);
+            updateForecasts(newInitialData);
         }
     }, [allData]);
 
