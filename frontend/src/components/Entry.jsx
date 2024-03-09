@@ -18,11 +18,11 @@ export default function Entry(props) {
     return (
         <div className={
             `text-white text-left p-3 my-1 w-full border rounded-md flex justify-between
-            ${props.chosenDate === lastUpdated ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`}>
+            ${props.chosenRecordId === props.data._id ? 'bg-blue-300 ' : 'bg-blue-500 hover:bg-blue-400'}`}>
         <button 
             className=""
-            onClick={() => props.handleClick(props.data.forecasts)}
-            disabled={props.chosenDate === lastUpdated}
+            onClick={() => props.handleClick(props.data)}
+            disabled={props.chosenRecordId === props.data._id}
         >
             <h1 className="font-semibold">{lastUpdated}</h1>
         </button>

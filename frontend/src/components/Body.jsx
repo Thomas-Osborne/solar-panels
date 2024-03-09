@@ -8,12 +8,14 @@ import React from "react";
 import Configuration from './Configuration';
 
 export default function Body() {
+    
 
     const [allData, setAllData] = React.useState([]);
     const [initialData, setInitialData] = React.useState(null);
     const [dates, setDates] = React.useState([]);
     const [chosenDate, setChosenDate] = React.useState("");
     const [forecasts, setForecasts] = React.useState({});
+    const [chosenRecordId, setChosenRecordId] = React.useState(null);
 
     const [configuredValues, setConfiguredValues] = React.useState(
         {
@@ -57,8 +59,8 @@ export default function Body() {
         if (allData.length > 0) {
             const newInitialData = allData[0];
             setInitialData(newInitialData);
-
             updateForecasts(newInitialData.forecasts);
+            setChosenRecordId(newInitialData._id);
         }
     }, [allData]);
 
@@ -67,18 +69,22 @@ export default function Body() {
     }
 
     function updateForecasts(data) {
-        const newDates = Object.keys(splitData(data));
-        const newDate = determineFixedDate(data);
+        const newForecasts = splitData(data.forecasts);
+        const newDates = Object.keys(newForecasts);
+        const newDate = determineFixedDate(data.forecasts);
+        const newChosenRecordId = data._id;
+
+        setForecasts(newForecasts);
         setDates(newDates);
         setChosenDate(newDate);
-        setForecasts(splitData(data));
+        setChosenRecordId(newChosenRecordId);
     }
 
     return (
         <main className="h-screen flex flex-col">
             <div className="rounded-xl mx-5 my-1 px-5 h-3/5 flex">
                 <div className="w-1/5 flex flex-col px-2">
-                    <Box name="Previous Records" content={<History oldData={allData} chosenDate={chosenDate} handleClick={updateForecasts} />} />
+                    <Box name="Previous Records" content={<History oldData={allData} chosenRecordId={chosenRecordId} handleClick={updateForecasts} />} />
                 </div>
                 <div className="w-3/5 flex flex-col px-2">
                     <Box name="Graph" content={<Graph data={forecasts} dates={dates} chosenDate={chosenDate} updatedAt={initialData?.updatedAt} handleFetchClick={fetchForecasts} handleDateClick={updateDate}/>} />
