@@ -79,7 +79,7 @@ export default function Body() {
     }
 
     return (
-        <main className="h-screen flex flex-col">
+        <main className="container flex-wrap flex-col justify-center">
             <div className="rounded-xl mx-5 my-1 px-5 h-3/5 flex">
                 <div className="w-1/5 flex flex-col px-2">
                     <Box name="Previous Records" content={<History oldData={allData} chosenRecordId={chosenRecordId} handleClick={updateForecasts} />} />
